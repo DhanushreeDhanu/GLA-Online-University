@@ -1428,7 +1428,7 @@ body {
   .glaFaq_tabBtns{
     background: rgba(255,255,255,0.08);
     padding: 20px 20px 80px;
-    min-height: 1800px;
+    min-height: 2200px;
   }
 
   .glaFaq_tabBtn {
@@ -1546,3 +1546,141 @@ body {
       padding-bottom: 25px;
     }
   }
+
+  
+/* ===== FOOTER ===== */
+.glaFooter_section{
+  background:#1d1714;
+  padding:40px 18px 30px;
+  color:#fff;
+}
+
+.glaFooter_container{
+  max-width:1200px;
+  margin:0 auto;
+}
+
+/* ===== LINKS ===== */
+.glaFooter_links{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:18px 22px;
+}
+
+.glaFooter_links a{
+  color:#fff;
+  text-decoration:none;
+  font-size:15px;
+  
+  transition:0.3s;
+}
+
+.glaFooter_links a:hover{
+  color:#ffc400;
+}
+
+/* LINE */
+.glaFooter_line{
+  height:1px;
+  background:rgba(255,255,255,.2);
+  margin:28px 0;
+}
+
+/* ===== BOTTOM ===== */
+.glaFooter_bottom{
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  gap:20px;
+}
+
+/* TEXT */
+.glaFooter_copy,
+.glaFooter_credit{
+  font-size:13px;
+  
+}
+
+.glaFooter_credit{
+  text-align:right;
+}
+
+/* ===== SOCIAL ICONS ===== */
+.glaFooter_social{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+}
+
+.glaFooter_social a{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:13px;
+  color:#fff;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+/* FACEBOOK */
+.glaFb{
+  background:#1877f2;
+}
+
+/* YOUTUBE */
+.glaYt{
+  background:#ff0000;
+}
+
+/* INSTAGRAM */
+.glaInsta{
+  background: radial-gradient(circle at 30% 30%, 
+    #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+}
+
+/* HOVER */
+.glaFooter_social a:hover{
+  transform:scale(1.1);
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:768px){
+
+  .glaFooter_links{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:28px 40px;
+    text-align:left;
+  }
+
+  .glaFooter_links a{
+    font-size:18px;
+  }
+
+  .glaFooter_bottom{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    gap:12px;
+  }
+
+  /* ORDER FIX */
+  .glaFooter_copy{
+    order:1;
+  }
+
+  .glaFooter_credit{
+    order:2;
+    text-align:center;
+  }
+
+  .glaFooter_social{
+    order:3;
+    margin-top:10px;
+  }
+}
