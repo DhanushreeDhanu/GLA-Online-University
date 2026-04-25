@@ -444,3 +444,13 @@ Part 14
         992: { slidesPerView: 3 }
       }
     });
+       /*====================================================
+    OUR PRESENCE SECTION-15
+    ====================================================*/
+    document.addEventListener("DOMContentLoaded", function () {
+  const video = document.querySelector(".global_map_box video");
+  if (video) {
+    video.muted = true;
+    video.play().catch(() => {});
+  }
+});
