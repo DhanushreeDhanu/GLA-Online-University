@@ -416,3 +416,31 @@ new Swiper(".zxqTesti_swiper", {
     1024: { slidesPerView: 3 }
   }
 });
+
+/*===================================
+Part 14
+===================================*/
+    new Swiper(".mentor-slider", {
+      loop: true,
+      speed: 600,
+      spaceBetween: 30,
+
+      slidesPerView: 3,
+      slidesPerGroup: 1,
+
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+
+      navigation: {
+        nextEl: ".mtm-arrow-next",
+        prevEl: ".mtm-arrow-prev",
+      },
+
+      breakpoints: {
+        0: { slidesPerView: 1 },
+        576: { slidesPerView: 2 },
+        992: { slidesPerView: 3 }
+      }
+    });
