@@ -67,6 +67,8 @@ html, body {
 .banner_form input,
 .banner_form select {
   width: 100%;
+
+  margin-bottom: 10px;
   margin-bottom: 10px;
   height: 42px;
   padding: 8px;
