@@ -358,3 +358,35 @@ var swiper = new Swiper(".alumni_events", {
 /*===================================
 Part 12
 ===================================*/
+   var swiper = new Swiper(".spx-slider", {
+            slidesPerView: 4,
+            spaceBetween: 20,
+            loop: true,
+            loopedSlides: 9,
+
+            speed: 5000,
+
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+
+            allowTouchMove: false,
+
+            navigation: {
+                nextEl: ".spx-next",
+                prevEl: ".spx-prev",
+            },
+
+            breakpoints: {
+                0: { slidesPerView: 1 },
+                576: { slidesPerView: 2 },
+                768: { slidesPerView: 3 },
+                992: { slidesPerView: 4 }
+            }
+        });
+
+/*===================================
+Part 13
+===================================*/
+
