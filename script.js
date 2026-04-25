@@ -181,3 +181,212 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 });
+
+//Part-5
+
+//no js
+
+/*==========Part 6==========*/
+const counters = document.querySelectorAll(".counter-number");
+
+counters.forEach(counter => {
+  const target = +counter.dataset.target;
+  const suffix = counter.dataset.suffixLast || "";
+  let count = 0;
+
+  const update = () => {
+    const increment = target / 80;
+
+    if (count < target) {
+      count += increment;
+      counter.innerHTML = Math.floor(count);
+      requestAnimationFrame(update);
+    } else {
+      counter.innerHTML = target + suffix;
+    }
+  };
+
+  update();
+});
+
+//part-6
+const gharSwiper = new Swiper(".gharse_globle", {
+  slidesPerView: 1,
+  loop: true,
+  speed: 1200, // smooth transition
+
+  effect: "fade", // ⭐ no left-right movement
+  fadeEffect: {
+    crossFade: true
+  },
+
+  autoplay: {
+    delay: 2500,
+    disableOnInteraction: false,
+  },
+
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  }
+});
+
+//part 7 no js
+//part 8
+const counter = document.querySelectorAll(".counter-number");
+
+const animateCounter = (counter) => {
+  const target = parseFloat(counter.dataset.target);
+  const prefix = counter.dataset.prefix || "";
+  const suffix = counter.dataset.suffixLast || "";
+
+  let current = 0;
+  const step = target / 80;
+
+  const update = () => {
+    if (current < target) {
+      current += step;
+
+      let value =
+        target % 1 === 0
+          ? Math.floor(current)
+          : current.toFixed(1);
+
+      counter.innerHTML = prefix + value + suffix;
+
+      requestAnimationFrame(update);
+    } else {
+      counter.innerHTML = prefix + target + suffix;
+    }
+  };
+
+  update();
+};
+
+const observer = new IntersectionObserver((entries, obs) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+
+    animateCounter(entry.target);
+    obs.unobserve(entry.target);
+  });
+}, { threshold: 0.5 });
+
+counters.forEach(counter => observer.observe(counter));
+//====================Part 9==================
+var swiper = new Swiper(".wall_distinction_slider", {
+    slidesPerView: 4,
+    spaceBetween: 20,
+    loop: true,
+
+    speed: 800, // 👈 transition speed (slide animation)
+
+    autoplay: {
+        delay: 10000, // 👈 10 seconds delay
+        disableOnInteraction: false,
+    },
+
+    allowTouchMove: true, // optional (can swipe manually)
+
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+    },
+
+    breakpoints: {
+        0: { slidesPerView: 1 },
+        576: { slidesPerView: 2 },
+        768: { slidesPerView: 3 },
+        992: { slidesPerView: 4 }
+    }
+});
+
+
+//===================Part 10===================
+document.addEventListener("DOMContentLoaded", function () {
+
+    const iframe = document.getElementById("alumniVideo");
+    const button = document.getElementById("soundToggle");
+
+    const player = new Vimeo.Player(iframe);
+
+    let isMuted = true;
+
+    // ensure muted at start
+    player.setVolume(0);
+
+    button.addEventListener("click", function () {
+
+        if (isMuted) {
+            player.setVolume(1).then(() => {
+                button.innerHTML = "🔊";
+            });
+        } else {
+            player.setVolume(0).then(() => {
+                button.innerHTML = "🔇";
+            });
+        }
+
+        isMuted = !isMuted;
+    });
+
+});
+/*====================================
+part 11
+====================================*/
+var swiper = new Swiper(".alumni_events", {
+    slidesPerView: 2,
+    spaceBetween: 25,
+    loop: true,
+
+    autoplay: {
+        delay: 4000,
+        disableOnInteraction: false,
+    },
+
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+    },
+
+    breakpoints: {
+        0: { slidesPerView: 1 },
+        768: { slidesPerView: 2 }
+    }
+});
+
+/*===================================
+Part 12
+===================================*/
+   var swiper = new Swiper(".spx-slider", {
+            slidesPerView: 4,
+            spaceBetween: 20,
+            loop: true,
+            loopedSlides: 9,
+
+            speed: 5000,
+
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+
+            allowTouchMove: false,
+
+            navigation: {
+                nextEl: ".spx-next",
+                prevEl: ".spx-prev",
+            },
+
+            breakpoints: {
+                0: { slidesPerView: 1 },
+                576: { slidesPerView: 2 },
+                768: { slidesPerView: 3 },
+                992: { slidesPerView: 4 }
+            }
+        });
+
+/*===================================
+Part 13
+===================================*/
+
