@@ -362,3 +362,71 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 });
+
+
+ document.addEventListener("DOMContentLoaded", function () {
+      const tabButtons = document.querySelectorAll(".glaFaq_tabBtn");
+      const tabContents = document.querySelectorAll(".glaFaq_tabContent");
+
+      tabButtons.forEach(button => {
+        button.addEventListener("click", function () {
+          const tabId = this.getAttribute("data-tab");
+
+          tabButtons.forEach(btn => btn.classList.remove("active"));
+          tabContents.forEach(content => content.classList.remove("active"));
+
+          this.classList.add("active");
+          document.getElementById(tabId).classList.add("active");
+
+          openFirstAccordion(document.getElementById(tabId));
+        });
+      });
+
+      function setupAccordions() {
+        document.querySelectorAll(".glaFaq_item").forEach(item => {
+          const header = item.querySelector(".glaFaq_header");
+          const body = item.querySelector(".glaFaq_body");
+
+          if (item.classList.contains("active")) {
+            body.style.maxHeight = body.scrollHeight + "px";
+          }
+
+          header.addEventListener("click", function () {
+            const accordion = item.closest(".accordion");
+
+            accordion.querySelectorAll(".glaFaq_item").forEach(otherItem => {
+              if (otherItem !== item) {
+                otherItem.classList.remove("active");
+                otherItem.querySelector(".glaFaq_body").style.maxHeight = null;
+              }
+            });
+
+            item.classList.toggle("active");
+
+            if (item.classList.contains("active")) {
+              body.style.maxHeight = body.scrollHeight + "px";
+            } else {
+              body.style.maxHeight = null;
+            }
+          });
+        });
+      }
+
+      function openFirstAccordion(tabContent) {
+        const items = tabContent.querySelectorAll(".glaFaq_item");
+
+        items.forEach((item, index) => {
+          const body = item.querySelector(".glaFaq_body");
+
+          if (index === 0) {
+            item.classList.add("active");
+            body.style.maxHeight = body.scrollHeight + "px";
+          } else {
+            item.classList.remove("active");
+            body.style.maxHeight = null;
+          }
+        });
+      }
+
+      setupAccordions();
+    });

@@ -1386,3 +1386,163 @@ body {
     padding: 15px;
   }
 }
+
+
+
+  .glaFaq_section {
+    background: #315f64;
+    padding: 95px 20px 80px;
+  }
+
+  .glaFaq_container {
+    max-width: 1060px;
+    margin: 0 auto;
+  }
+
+  .glaFaq_heading {
+    margin-bottom: 50px;
+  }
+
+  .glaFaq_heading h6 {
+    color: #ffc400;
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0 0 12px;
+  }
+
+  .glaFaq_heading h3 {
+    color: #fff;
+    font-size: 40px;
+    line-height: 1.15;
+    font-weight: 800;
+    margin: 0;
+  }
+
+  .tabs-glaFaq_container {
+    display: grid;
+    grid-template-columns: 322px 1fr;
+    gap: 62px;
+    align-items: flex-start;
+  }
+
+  .glaFaq_tabBtns{
+    background: rgba(255,255,255,0.08);
+    padding: 20px 20px 80px;
+    min-height: 1800px;
+  }
+
+  .glaFaq_tabBtn {
+    width: 100%;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.25);
+    color: #fff;
+    text-align: left;
+    padding: 20px 0;
+    font-size: 16px;
+    line-height: 1.3;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .glaFaq_tabBtn.active {
+    color: #ffc400;
+    border-bottom: 2px solid #ffc400;
+  }
+
+  .glaFaq_tabContent {
+    display: none;
+  }
+
+  .glaFaq_tabContent.active {
+    display: block;
+  }
+
+  .glaFaq_item {
+    background: rgba(255,255,255,0.09);
+    border-radius: 8px;
+    margin-bottom: 13px;
+    overflow: hidden;
+  }
+
+  .glaFaq_header {
+    width: 100%;
+    min-height: 55px;
+    background: transparent;
+    border: 0;
+    color: #fff;
+    text-align: left;
+    padding: 17px 25px 17px 68px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.25;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .glaFaq_header::before {
+    content: "+";
+    position: absolute;
+    left: 20px;
+    top: 18px;
+    width: 22px;
+    height: 22px;
+    border: 2px solid #ffc400;
+    color: #ffc400;
+    border-radius: 50%;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 18px;
+    text-align: center;
+  }
+
+  .glaFaq_item.active .glaFaq_header::before {
+    content: "−";
+    background: #ffc400;
+    color: #315f64;
+  }
+
+  .glaFaq_body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+  }
+
+  .glaFaq_body p,
+  .glaFaq_body ul,
+  .glaFaq_body ol {
+    margin: 0;
+    padding: 0 25px 22px 68px;
+    font-size: 11px;
+    line-height: 1.55;
+    color: #fff;
+  }
+
+  .glaFaq_body li {
+    margin-bottom: 5px;
+  }
+
+  .glaFaq_body a {
+    color: #ffc400;
+    text-decoration: none;
+  }
+
+  @media (max-width: 991px) {
+    .glaFaq_section {
+      padding: 60px 15px;
+    }
+
+    .glaFaq_heading h3 {
+      font-size: 34px;
+    }
+
+    .tabs-glaFaq_container {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .glaFaq_tabBtns {
+      min-height: auto;
+      padding-bottom: 25px;
+    }
+  }
