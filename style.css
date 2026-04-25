@@ -1,0 +1,1308 @@
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+  font-family: Arial, sans-serif;
+}
+
+/* ===== HOME BANNER ===== */
+.home_banner {
+  position: relative; /* ✅ important for overlay */
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+/* SWIPER FULL HEIGHT */
+.home_banner .swiper,
+.home_banner .swiper-wrapper,
+.home_banner .swiper-slide {
+  width: 100%;
+  height: 100%;
+}
+
+/* IMAGE */
+.home_banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ===== DARK OVERLAY ===== */
+.home_banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right,
+      rgba(0, 0, 0, 0.75),
+      rgba(0, 0, 0, 0.25));
+  z-index: 1;
+}
+
+/* ===== SLIDER CONTENT ===== */
+.home_slider {
+  position: relative;
+  z-index: 2;
+}
+
+/* ===== FORM ===== */
+.banner_form {
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 320px;
+  z-index: 3;
+  background: rgba(255,255,255,0.95);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* INPUTS */
+.banner_form input,
+.banner_form select {
+  width: 100%;
+  margin-bottom: 10px;
+  height: 42px;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+/* BUTTON */
+.banner_form button {
+  width: 100%;
+  background: #2e7d32;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* ===== PAGINATION (CENTERED) ===== */
+.swiper-pagination {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 30px;
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+}
+
+.swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background: #fff;
+  opacity: 0.5;
+  margin: 0 4px !important;
+  border-radius: 50%;
+}
+
+.swiper-pagination-bullet-active {
+  background: #2e7d32;
+  opacity: 1;
+}
+
+/* =========================
+   COUNTER SECTION
+========================= */
+.counter_section {
+  overflow-x: hidden;
+}
+
+.counter {
+  font-weight: bold;
+  color: #000;
+}
+
+/* =========================
+   RANKING SECTION
+========================= */
+.acre_ranking {
+  padding: 60px 0;
+}
+
+.sec_hed h6 {
+  font-size: 26px;
+  font-weight: 600;
+  
+}
+
+.ranking_Bx ul {
+  list-style: none;
+  margin: 40px 0;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.ranking_Bx li {
+  flex: 1;
+  min-width: 250px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.rank_bx h5 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.rank_bx p {
+  font-size: 14px;
+  color: #666;
+}
+
+/* =========================
+   RECRUITER SECTION
+========================= */
+.req_logo {
+  padding: 40px 0;
+  overflow: hidden;
+}
+
+/* SMOOTH SLIDE */
+.recruiter_slider_new .swiper-wrapper {
+  transition-timing-function: linear !important;
+}
+
+/* ONLY recruiter slider */
+.recruiter_slider_new .swiper-slide {
+  display: flex;
+  justify-content: center;
+  width: 200px;
+}
+
+/* CARD */
+.recruiter_slider_item {
+  max-width: 250px;
+  text-align: center;
+  padding: 15px;
+}
+
+/* IMAGE */
+.recruiter_slider_item img {
+  width: 100%;
+  height: 70px;
+  object-fit: contain;
+}
+
+/* TEXT */
+.recruiter_txt p {
+  font-size: 14px;
+  color: #333;
+}
+
+/* PAGINATION FOR RECRUITER */
+.req_logo .swiper-pagination {
+  position: relative !important;
+  left: 0;
+  transform: none;
+  margin-top: 15px;
+}
+
+ .banner_form{
+    visibility: visible !important;
+}
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+
+  .home_banner {
+    height: 70vh;
+  }
+
+  .banner_form {
+    position: static;
+    width: auto;
+    margin: 20px;
+    transform: none;
+  }
+
+ 
+
+  .swiper-pagination {
+    bottom: 15px;
+  }
+
+  .ranking_Bx ul {
+    flex-direction: column;
+  }
+}
+
+/* SMALL DEVICES */
+@media (max-width: 480px) {
+
+  .home_banner {
+    height: 60vh;
+  }
+
+  .swiper-pagination {
+    display: none;
+  }
+
+  .banner_form {
+    margin: 10px;
+    padding: 15px;
+  }
+}
+
+/* Part 4 */
+
+.people_visited {
+  background: #24415f;
+  padding: 60px 0;
+}
+
+.sec_hed h6 {
+  color: #cbd5e1;
+  
+  margin-bottom: 10px;
+}
+
+.sec_hed h3 {
+  color: #fff;
+  
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.people_slide_Bx {
+  margin-top: 40px;
+}
+
+/* IMAGE BOX */
+.people_Bx {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.people_Bx img {
+  width: 100%;
+  height: 350px;   /* FIXED HEIGHT like design */
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* TEXT OVERLAY */
+.people_Bx_txt {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+}
+
+.people_Bx_txt p {
+  color: #fff;
+  font-size: 14px;
+  margin: 0;
+}
+
+/* SWIPER SPACING */
+.swiper {
+  padding-bottom: 40px;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+}
+
+/* PAGINATION */
+.swiper-pagination-bullet {
+  background: #fff;
+  opacity: 0.5;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .people_Bx img {
+    height: 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  .people_Bx img {
+    height: 220px;
+  }
+}
+/* part 5 */
+
+/* CARD */
+.why_gla figure {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  height: 320px;
+}
+
+/* IMAGE */
+.why_gla img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+
+/* HOVER EFFECT (optional) */
+.why_gla figure:hover::after {
+  background: rgba(34, 92, 52, 0.3); /* lighter on hover */
+}
+
+.why_gla figure:hover img {
+  transform: scale(1.1);
+}
+.why_gla .swiper-slide {
+  padding: 10px; /* creates gap */
+}
+
+/*==========Part 6==========*/.plsmnt_avrg {
+  padding: 60px 0;
+  background: #f5f5f5;
+}
+
+/* GRID FIX */
+.top_companies {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid; /* ⭐ IMPORTANT */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+/* CARD */
+.top_companies_item {
+  background: #4a7746;
+  border-radius: 12px;
+  padding: 40px 20px;
+  text-align: center;
+  width: 100%;
+  transition: 0.3s;
+}
+
+.top_companies_item:hover {
+  transform: translateY(-5px);
+}
+
+/* NUMBER */
+.top_companies_caption h4 {
+  font-size: 48px;
+  font-weight: 700;
+  color: #f4c430;
+  margin-bottom: 10px;
+}
+
+/* TEXT */
+.top_companies_caption p {
+  color: #fff;
+  font-size: 16px;
+  margin: 0;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .top_companies {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .top_companies {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*part-6*/
+/* SECTION */
+.ghr-se-globle {
+  padding: 70px 0;
+  background: #f5f5f5;
+}
+
+/* GRID */
+.ghr_grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+/* LEFT SIDE */
+.ghr_lft h3 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.ghr_lft h3 span {
+  color: #4a7746;
+}
+
+.ghr_lft p {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+/* BUTTONS */
+.ghr_lft ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 15px;
+}
+
+.btn_white_2 {
+  padding: 10px 20px;
+  border: 2px solid #4a7746;
+  color: #4a7746;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.btn_white_2:hover {
+  background: #4a7746;
+  color: #fff;
+}
+
+.btn_green_2 {
+  padding: 10px 20px;
+  background: #4a7746;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.btn_green_2:hover {
+  background: #355c32;
+}
+
+/* RIGHT SIDE SLIDER */
+.ghr_rhgt {
+  position: relative;
+}
+
+/* SLIDE IMAGE */
+.gharse_globle_item img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* SWIPER PAGINATION */
+.swiper-pagination {
+  position: relative;
+  margin-top: 15px;
+}
+
+.swiper-pagination-bullet {
+  background: #4a7746;
+  opacity: 0.5;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .ghr_grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gharse_globle_item img {
+    height: 280px;
+  }
+}
+
+@media (max-width: 576px) {
+  .ghr_lft h3 {
+    font-size: 24px;
+  }
+
+  .ghr_lft ul {
+    flex-direction: column;
+  }
+
+  .gharse_globle_item img {
+    height: 220px;
+  }
+}
+
+
+/*====Part 8======*/
+/* SECTION */
+.placement_sec {
+  padding: 70px 0;
+  background: #f5f5f5;
+}
+
+/* MAIN GRID */
+.plsmnt_grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+/* LEFT */
+.top_companies_sec h4 {
+  color: #4a7746;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.top_companies_sec h3 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/* IMAGE */
+.cntre_img img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+/* RIGHT NAME */
+.name_txt h3 {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.name_txt p {
+  color: #666;
+  margin-bottom: 15px;
+}
+
+/* STATS CARDS */
+.plsmnt_rght {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.top_companies_item {
+  background: #4a7746;
+  padding: 20px;
+  border-radius: 12px;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.top_companies_item:hover {
+  transform: translateY(-5px);
+}
+
+/* COUNTER */
+.top_companies_caption h4 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #f4c430;
+  margin-bottom: 5px;
+}
+
+.top_companies_caption p {
+  font-size: 14px;
+  margin: 0;
+}
+
+/* SHAPES (optional keep clean) */
+.shape_wrapper {
+  position: absolute;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .plsmnt_grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*====Part 9======*/
+/* =========================
+   WALL OF DISTINCTION SECTION
+========================= *//* SECTION *//* CARD FIX *//* =========================
+   SECTION
+========================= */
+.wall_distinction {
+    padding: 80px 0;
+    background: #f9f9f9;
+}
+
+/* =========================
+   HEADER
+========================= */
+.wall_dis_header {
+ 
+    margin-bottom: 40px;
+}
+
+.wall_dis_header h6 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #f5b400;
+}
+
+.wall_dis_header h3 {
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.wall_dis_header h3 span {
+    display: block;
+    font-size: 16px;
+    color: #777;
+}
+
+/* =========================
+   SLIDER
+========================= */
+.wall_distinction_slider {
+    position: relative;
+}
+
+/* =========================
+   CARD
+========================= */
+.wall_distinction_Bx {
+    position: relative;
+    background: #f5f5f5;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.wall_distinction_Bx:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* =========================
+   IMAGE
+========================= */
+.wall_distinction_Bx figure {
+    margin: 0;
+}
+
+.wall_distinction_Bx img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    display: block;
+    transition: 0.4s ease;
+}
+
+/* REMOVE OLD OVERLAY */
+.main_wall {
+    display: block;
+}
+
+/* =========================
+   FIGCAPTION (HIDDEN INITIALLY)
+========================= */
+.wall_distinction_Bx figcaption {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.8);
+    color: #f5f5f5;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    padding: 20px;
+
+    opacity: 0;
+    transition: 0.4s ease;
+}
+
+/* =========================
+   HOVER EFFECT
+========================= */
+.wall_distinction_Bx:hover img {
+    opacity: 0;
+}
+
+.wall_distinction_Bx:hover figcaption {
+    opacity: 1;
+}
+
+/* =========================
+   TEXT STYLING
+========================= */
+.wall_distinction_Bx figcaption h4 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.wall_distinction_Bx figcaption h5 {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.wall_distinction_Bx figcaption h6 {
+    font-size: 13px;
+    opacity: 0.85;
+    margin-bottom: 10px;
+}
+
+.wall_distinction_Bx figcaption p {
+    font-size: 13px;
+    margin: 2px 0;
+}
+
+/* =========================
+   PAGINATION
+========================= */
+.swiper-pagination {
+    margin-top: 25px;
+    text-align: center;
+}
+
+.swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    background: #ccc;
+    opacity: 1;
+    margin: 0 5px !important;
+}
+
+.swiper-pagination-bullet-active {
+    background: #f5b400;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 992px) {
+    .wall_dis_header h3 {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 768px) {
+    .wall_dis_header h3 {
+        font-size: 24px;
+    }
+
+    .wall_distinction_Bx img {
+        height: 220px;
+    }
+}
+
+@media (max-width: 576px) {
+    .wall_distinction_Bx img {
+        height: 200px;
+    }
+}
+
+/*====================================
+part 10
+====================================*/
+
+/* =========================
+   VIDEO SECTION
+========================= */
+.video_section {
+    padding: 80px 0;
+    background: transparent;
+}
+
+/* WRAPPER */
+.video_wrapper {
+    position: relative;
+    width: 100%;
+    height: 500px; /* adjust height */
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+/* IFRAME */
+.video_wrapper iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: #f5f5f5;
+}
+
+/* SOUND BUTTON */
+.sound-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+width: fit-content;
+
+    color: #f5f5f5;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.sound-btn:hover {
+    background: rgba(0,0,0,0.9);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .video_wrapper {
+        height: 300px;
+    }
+}
+/*====================================
+part 11
+====================================/* =========================
+   SECTION
+========================= */
+.gla_events_section {
+    padding: 80px 0;
+    background: #1f6b3b;
+}
+
+/* =========================
+   HEADER
+========================= */
+.gla_events_hed {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.gla_events_hed h6 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.gla_events_hed h3 {
+    font-size: 36px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.3;
+}
+
+/* =========================
+   SWIPER FIX
+========================= */
+.alumni_events .swiper-slide {
+    display: flex;
+    height: auto;
+}
+
+/* =========================
+   CARD
+========================= */
+.alumni_Bx {
+    width: 100%;
+}
+
+/* =========================
+   IMAGE
+========================= */
+.alumni_events_txt figure {
+    margin: 0;
+}
+
+.alumni_events_txt img {
+    width: 100%;
+    height:auto;
+    object-fit: contain;
+    background: #fff;
+}
+/* =========================
+   TEXT
+========================= */
+.alumni_events_txt {
+    padding-top: 12px;
+}
+
+.alumni_events_txt p {
+    font-size: 14px;
+   
+    line-height: 1.6;
+    margin-top: 10px;
+    display: block;
+}
+
+/* =========================
+   REMOVE OVERLAY COMPLETELY
+========================= */
+.alumni_events_txt .f_link {
+    display: none !important;
+    pointer-events: none;
+}
+
+/* =========================
+   PAGINATION FIX
+========================= */
+.swiper-pagination {
+    margin-top: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    background: #ccc;
+    opacity: 1;
+    margin: 0 5px !important;
+}
+
+.swiper-pagination-bullet-active {
+    background: #f5b400;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 992px) {
+    .gla_events_hed h3 {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 768px) {
+    .gla_events_hed h3 {
+        font-size: 24px;
+    }
+
+    .alumni_events_txt img {
+        height: 200px;
+    }
+}
+
+@media (max-width: 576px) {
+    .alumni_events_txt img {
+        height: 180px;
+    }
+}
+/*================================part 12====================================*/
+
+
+        .spx-section {
+            padding: 70px 0;
+        }
+
+        /* BOX */
+        .spx-box {
+            background: #F9CE3A;
+            padding: 60px 50px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        /* HEADINGS */
+        .spx-box h4 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .spx-box h3 {
+            font-size: 44px;
+            font-weight: 800;
+            color: rgb(67, 111, 64);
+            margin-bottom: 20px;
+        }
+
+        .spx-box h3 span {
+            display: block;
+        }
+
+        /* BUTTON */
+        .spx-btn img {
+            width: 18px;
+            margin-bottom: 30px;
+        }
+
+        /* SLIDER */
+        .spx-slider {
+            position: relative;
+        }
+
+        /* SLIDES */
+        .spx-slider .swiper-slide {
+            padding: 10px;
+            display: flex;
+        }
+
+        .spx-slider .swiper-wrapper {
+            transition-timing-function: linear !important;
+        }
+
+        /* CARD */
+        .spx-card {
+            width: 100%;
+            perspective: 1000px;
+        }
+
+        /* FLIP */
+        .spx-flip {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            min-height: 340px;
+            transform-style: preserve-3d;
+            transition: 0.6s ease-in-out;
+        }
+
+        .spx-card:hover .spx-flip {
+            transform: rotateY(180deg);
+        }
+
+        /* FRONT + BACK */
+        .spx-card figure,
+        .spx-card figcaption {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            backface-visibility: hidden;
+        }
+
+        /* IMAGE */
+        .spx-card img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        /* CONTENT */
+        .spx-content {
+            padding: 12px;
+            text-align: left;
+        }
+
+        .spx-content h4 {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .spx-content p {
+            font-size: 14px;
+            margin: 2px 0;
+        }
+
+        .spx-content h6 {
+            font-size: 12px;
+            color: #555;
+        }
+
+        /* BACK */
+        .spx-card figcaption {
+            background: #2e7d32;
+            color: #fff;
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            text-align: center;
+        }
+
+        /* ARROWS */
+        .spx-prev,
+        .spx-next {
+            width: 36px;
+            height: 36px;
+            border: 1px solid #000;
+            border-radius: 4px;
+            color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+        }
+
+        .spx-prev::after {
+            content: "<";
+            font-size: 16px;
+        }
+
+        .spx-next::after {
+            content: ">";
+            font-size: 16px;
+        }
+
+        .spx-arrows {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        /* RESPONSIVE */
+        @media(max-width:992px) {
+            .spx-box h3 {
+                font-size: 26px;
+            }
+        }
+/*===================================part 13====================================*/
+ /* ===== TESTIMONIAL SECTION ===== */
+/* SECTION */
+.zxqTesti_section {
+  background: #244262;
+  padding: 60px 0;
+  color: #fff;
+  overflow: hidden;
+}
+
+/* HEADING */
+.zxqTesti_heading h6 {
+  color: #f6c744;
+  font-size: 26px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* CONTAINER */
+.zxqTesti_section .container {
+  max-width: 1140px;
+  margin: auto;
+  padding: 0 15px;
+}
+
+/* SWIPER */
+.zxqTesti_swiper {
+  padding: 40px 40px 0;   /* side space */
+  overflow: hidden;       /* ✅ VERY IMPORTANT */
+}
+
+/* SLIDES */
+.zxqTesti_swiper .swiper-wrapper {
+  align-items: stretch;
+}
+
+.zxqTesti_swiper .swiper-slide {
+  display: flex;
+  justify-content: center;
+  height: auto;
+}
+
+/* CARD */
+.zxqTesti_card {
+  position: relative;
+  margin-top: 60px;       /* ✅ prevents image cut */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  padding: 80px 25px 30px;
+  text-align: start;
+  width: 100%;
+  transition: 0.3s;
+}
+
+/* IMAGE */
+.zxqTesti_imgWrap {
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.zxqTesti_imgWrap img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 4px solid #244262;
+  object-fit: cover;
+}
+
+/* TEXT */
+.zxqTesti_text {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #dbe6f2;
+  margin-bottom: 25px;
+}
+
+/* NAME */
+.zxqTesti_name h4 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.zxqTesti_name h5 {
+  font-size: 14px;
+  color: #cfd9e6;
+}
+
+/* HOVER */
+.zxqTesti_card:hover {
+  transform: translateY(-10px);
+  border-color: #f6c744;
+}
+
+/* PAGINATION */
+.zxqTesti_swiper .swiper-pagination {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.zxqTesti_swiper .swiper-pagination-bullet {
+  background: #fff;
+  opacity: 0.4;
+}
+
+.zxqTesti_swiper .swiper-pagination-bullet-active {
+  background: #f6c744;
+  opacity: 1;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .zxqTesti_swiper {
+    padding: 40px 20px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .zxqTesti_swiper {
+    padding: 40px 15px 0;
+  }
+
+  .zxqTesti_imgWrap img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .zxqTesti_text {
+    font-size: 14px;
+  }
+}

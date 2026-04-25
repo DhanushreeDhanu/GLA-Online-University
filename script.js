@@ -389,4 +389,30 @@ Part 12
 /*===================================
 Part 13
 ===================================*/
+new Swiper(".zxqTesti_swiper", {
+  loop: true,
 
+  slidesPerView: 3,
+  slidesPerGroup: 1,
+  spaceBetween: 30,
+
+  centeredSlides: false,
+  watchOverflow: true,
+  loopFillGroupWithBlank: true, // ✅ ADD THIS
+
+  autoplay: {
+    delay: 3000,
+    disableOnInteraction: false,
+  },
+
+  pagination: {
+    el: ".zxqTesti_swiper .swiper-pagination",
+    clickable: true,
+  },
+
+  breakpoints: {
+    0: { slidesPerView: 1 },
+    768: { slidesPerView: 2 },
+    1024: { slidesPerView: 3 }
+  }
+});
