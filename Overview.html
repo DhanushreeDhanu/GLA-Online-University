@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GLA Header</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -532,156 +534,300 @@
     }
 
     /* Section */
-.ceo-section {
-    padding-top: 80px;
-    padding-bottom:0px;
-  background-image: url("Overview/5.jpg");
-  background-size: cover;
-  background-position: center;
-  color: #fff;
-  min-height: 90vh;
-  height: auto;
-}
+    .ceo-section {
+      padding-top: 80px;
+      padding-bottom: 0px;
+      background-image: url("Overview/5.jpg");
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+      min-height: 90vh;
+      height: auto;
+    }
 
-/* Image */
-.ceo-img {
-  width: 100%;
-  max-width: 400px;
-}
+    /* Image */
+    .ceo-img {
+      width: 100%;
+      max-width: 400px;
+    }
 
-/* Quote */
-.ceo-quote {
-  font-size: 38px;
-  font-weight: 600;
-  line-height: 1.4;
-  margin-bottom: 20px;
-}
+    /* Quote */
+    .ceo-quote {
+      font-size: 38px;
+      font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 20px;
+    }
 
-/* Text */
-.ceo-text {
-  font-size: 16px;
-  line-height: 1.7;
-  color: #dcdcdc;
-  margin-bottom: 15px;
-}
+    /* Text */
+    .ceo-text {
+      font-size: 16px;
+      line-height: 1.7;
+      color: #dcdcdc;
+      margin-bottom: 15px;
+    }
 
-/* CEO Info */
-.ceo-info h5 {
-  color: #ffcc00;
-  margin-top: 20px;
-  margin-bottom: 5px;
-}
+    /* CEO Info */
+    .ceo-info h5 {
+      color: #ffcc00;
+      margin-top: 20px;
+      margin-bottom: 5px;
+    }
 
-.ceo-info span {
-  font-size: 14px;
-  color: #ccc;
-}
-.ceo-section {
-  position: relative;
-}
+    .ceo-info span {
+      font-size: 14px;
+      color: #ccc;
+    }
 
-.ceo-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: url("Overview/5.jpg") center/cover no-repeat;
-}
+    .ceo-section {
+      position: relative;
+    }
 
-.ceo-section .container {
-  position: relative;
-  z-index: 1;
-}
-/* Responsive */
-@media (max-width: 768px) {
-  .ceo-section {
-    text-align: center;
-  }
+    .ceo-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("Overview/5.jpg") center/cover no-repeat;
+    }
 
-  .ceo-img {
-    margin-bottom: 30px;
-  }
-  @media (max-width: 768px) {
-  .ceo-quote {
-    font-size: 26px;
-  }
-}
-}
- 
+    .ceo-section .container {
+      position: relative;
+      z-index: 1;
+    }
 
-/* SECTION */
-.worldmap_section_wrapper {
-  padding: 80px 0;
-  background: #f2f2f2;
-}
+    /* Responsive */
+    @media (max-width: 768px) {
+      .ceo-section {
+        text-align: center;
+      }
 
-/* HEADING */
-.world_map h2 {
-  font-size: 42px;
-  font-weight: 700;
-  color: #2e5d3d;
-  margin-bottom: 10px;
-}
+      .ceo-img {
+        margin-bottom: 30px;
+      }
 
-.subtitle {
-  font-size: 18px;
-  color: #333;
-  max-width: 700px;
-  margin: 0 auto 40px;
-}
+      @media (max-width: 768px) {
+        .ceo-quote {
+          font-size: 26px;
+        }
+      }
+    }
 
-/* VIDEO */
-.map_video {
-  position: relative;
-}
 
-.map_video video {
-  width: 100%;
-  border-radius: 10px;
-}
+    /* SECTION */
+    .worldmap_section_wrapper {
+      padding: 80px 0;
+      background: #fffffff6;
+    }
 
-/* OVERLAY CONTENT */
-.map_content {
-  position: absolute;
-  bottom: 40px;
-  left: 40px;
-  text-align: left;
-}
+    /* HEADING */
+    .world_map h2 {
+      font-size: 42px;
+      font-weight: 700;
+      color: #2e5d3d;
+      margin-bottom: 10px;
+    }
 
-.map_content h3 {
-  font-size: 60px;
-  font-weight: 700;
-  color: #2e5d3d;
-}
+    .subtitle {
+      font-size: 18px;
+      color: #333;
+      max-width: 700px;
+      margin: 0 auto 40px;
+    }
 
-.map_content p {
-  font-size: 18px;
-  color: #333;
-  margin-top: 10px;
-  line-height: 1.4;
-}
+    /* VIDEO */
+    .map_video {
+      position: relative;
+    }
 
-/* RESPONSIVE */
-@media (max-width: 768px) {
+    .map_video video {
+      width: 100%;
+      border-radius: 10px;
+    }
 
-  .world_map h2 {
-    font-size: 28px;
-  }
+    /* OVERLAY CONTENT */
+    .map_content {
+      position: absolute;
+      bottom: 40px;
+      left: 40px;
+      text-align: left;
+    }
 
-  .subtitle {
-    font-size: 15px;
-  }
+    .map_content h3 {
+      font-size: 60px;
+      font-weight: 700;
+      color: #2e5d3d;
+    }
 
-  .map_content {
-    position: static;
-    text-align: center;
-    margin-top: 20px;
-  }
+    .map_content p {
+      font-size: 18px;
+      color: #333;
+      margin-top: 10px;
+      line-height: 1.4;
+    }
 
-  .map_content h3 {
-    font-size: 40px;
-  }
-}
-</style>
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+
+      .world_map h2 {
+        font-size: 28px;
+      }
+
+      .subtitle {
+        font-size: 15px;
+      }
+
+      .map_content {
+        position: static;
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .map_content h3 {
+        font-size: 40px;
+      }
+    }
+
+
+    .about-four-bottom {
+      position: relative;
+      width: 100%;
+      min-height: 560px;
+      padding: 80px 0 0;
+      overflow: hidden;
+      background:
+        linear-gradient(rgba(45, 58, 91, 0.88), rgba(45, 58, 91, 0.88)),
+        url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=80");
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+    }
+
+    .cfo-main {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 70px;
+    }
+
+    .cfo-img {
+      margin: 0;
+      flex: 0 0 38%;
+      text-align: center;
+    }
+
+    .cfo-img img {
+      max-width: 420px;
+      width: 100%;
+      display: block;
+      margin: 0 auto;
+
+    }
+
+    @keyframes floatImage {
+      0% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-12px);
+      }
+
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    .cfo-box {
+      flex: 0 0 52%;
+      max-width: 620px;
+      padding-bottom: 70px;
+    }
+
+    .cfo-box blockquote {
+      font-size: 38px;
+      line-height: 1.25;
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: #fff;
+    }
+
+    .cfo-box p {
+      font-size: 16px;
+      line-height: 1.75;
+      font-weight: 500;
+      color: #f1f1f1;
+      margin-bottom: 26px;
+    }
+
+    .warm-regards {
+      border-top: 1px solid rgba(255, 255, 255, 0.55);
+      padding-top: 26px;
+      margin-top: 30px;
+    }
+
+    .warm-regards h6 {
+      color: #ffd21f;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .warm-regards p {
+      margin: 0;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 991px) {
+      .about-four-bottom {
+        padding: 60px 0;
+        min-height: auto;
+      }
+
+      .cfo-main {
+        flex-direction: column;
+        gap: 35px;
+        text-align: center;
+      }
+
+      .cfo-box {
+        flex: 0 0 100%;
+        padding-bottom: 0;
+      }
+
+      .cfo-box blockquote {
+        font-size: 28px;
+      }
+
+      .cfo-img {
+        flex: 0 0 100%;
+      }
+
+      .cfo-img img {
+        max-width: 320px;
+      }
+    }
+
+    @media (max-width: 575px) {
+      .about-four-bottom {
+        padding: 45px 0;
+      }
+
+      .cfo-box blockquote {
+        font-size: 24px;
+      }
+
+      .cfo-box p {
+        font-size: 15px;
+      }
+
+      .cfo-img img {
+        max-width: 280px;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -734,7 +880,8 @@
               </li>
             </ul>
 
-            <svg class="search_icon" onclick="openSearch()" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2">
+            <svg class="search_icon" onclick="openSearch()" viewBox="0 0 24 24" fill="none" stroke="#000"
+              stroke-width="2">
               <circle cx="11" cy="11" r="8"></circle>
               <path d="M21 21l-4.35-4.35"></path>
             </svg>
@@ -844,8 +991,10 @@
   <div class="search_overlay" id="searchOverlay">
     <span class="search_close" onclick="closeSearch()">×</span>
     <form class="d-flex gap-2 w-100 px-3" style="max-width:650px;" action="https://glaonline.com/search">
-      <input class="form-control rounded-pill px-4" type="text" name="search" id="searchInput" placeholder="Search..." required>
-      <button class="btn rounded-circle text-white" style="background:#3d6f3f;width:58px;height:58px;" type="submit">⌕</button>
+      <input class="form-control rounded-pill px-4" type="text" name="search" id="searchInput" placeholder="Search..."
+        required>
+      <button class="btn rounded-circle text-white" style="background:#3d6f3f;width:58px;height:58px;"
+        type="submit">⌕</button>
     </form>
   </div>
 
@@ -879,8 +1028,7 @@
             <div class="insp_lft" data-aos="fade-right" data-aos-duration="1200" data-aos-easing="ease-out-cubic">
               <figure class="image">
                 <img src="https://glaonline.com/siteassets/images/shree-ganesh-lal-ji.webp"
-                     alt="Late Shri Ganeshi Lal Agrawal"
-                     class="img-fluid w-100">
+                  alt="Late Shri Ganeshi Lal Agrawal" class="img-fluid w-100">
               </figure>
             </div>
 
@@ -942,42 +1090,84 @@
 
     </div>
   </section>
-<section class="worldmap_section_wrapper">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-xl-10 col-lg-11">
+    <section class="about-four-bottom">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-xl-10 col-lg-11">
+          <div class="cfo-main">
 
-        <div class="world_map text-center">
+            <figure class="cfo-img" data-aos="fade-right" data-aos-duration="1200">
+              <img src="https://glaonline.com/siteassets/images/abt-ceo.webp" alt="CEO" class="img-fluid">
+            </figure>
 
-          <!-- Heading -->
-          <h2>A Global Network of Change-Makers</h2>
+            <div class="cfo-box">
+              <blockquote data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+                "Building India’s Premier<br> Online Learning<br> Ecosystem!"
+              </blockquote>
 
-          <p class="subtitle">
-            Our GLAdiators span across the globe, contributing to leading
-            companies, startups, and research institutions
-          </p>
+              <p data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
+                Guided by a commitment to provide affordable and accessible<br>
+                education, GLA Online University extends its legacy of academic<br>
+                excellence beyond the physical campus. Our goal is to build India's<br>
+                most impactful online education ecosystem by making quality,<br>
+                industry-integrated learning available to all. GLA Online empowers<br>
+                learners with knowledge, practical skills, and the confidence to do<br>
+                wonders in today's competitive world. Ensuring that their<br>
+                educational journey is as transformative online as it is on campus.
+              </p>
 
-          <!-- Video Map -->
-          <div class="map_video">
-            <video autoplay muted loop playsinline>
-              <source src="https://glaonline.com/siteassets/images/world-map.mp4" type="video/mp4">
-            </video>
 
-            <!-- Overlay Content -->
-            <div class="map_content" data-aos="fade-up">
-              <h3>86%</h3>
-              <p>Average placement<br>over the last 5 years.</p>
+
+              <div class="warm-regards" data-aos="fade-up" data-aos-delay="800" data-aos-duration="1000">
+                <h6>Neeraj Agrawal</h6>
+                <p>CEO, GLA Online University</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="worldmap_section_wrapper">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-xl-10 col-lg-11">
+
+          <div class="world_map text-center">
+
+            <!-- Heading -->
+            <h2>A Global Network of Change-Makers</h2>
+
+            <p class="subtitle">
+              Our GLAdiators span across the globe, contributing to leading
+              companies, startups, and research institutions
+            </p>
+
+            <!-- Video Map -->
+            <div class="map_video">
+              <video autoplay muted loop playsinline>
+                <source src="https://glaonline.com/siteassets/images/world-map.mp4" type="video/mp4">
+              </video>
+
+              <!-- Overlay Content -->
+              <div class="map_content" data-aos="fade-up">
+                <h3>86%</h3>
+                <p>Average placement<br>over the last 5 years.</p>
+              </div>
+
             </div>
 
           </div>
 
         </div>
-
       </div>
     </div>
-  </div>
-</section>
-  
+  </section>
+
+
+
+
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -1060,4 +1250,5 @@
   </script>
 
 </body>
+
 </html>
