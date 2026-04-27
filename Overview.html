@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GLA Header</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      min-height: 200vh;
+      background: #f6f6f6;
+      color: #000;
+      margin: 0;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .main_header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 9999;
+      padding: 14px 0;
+      background: transparent;
+      transition: 0.35s ease;
+    }
+
+    .main_header.scrolled,
+    .main_header.mega-open {
+      background: #fff;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+      padding: 10px 0;
+    }
+
+    .logo_wrap img {
+      max-width: 280px;
+      width: 100%;
+    }
+
+    .nav-link {
+      font-size: 15px;
+      font-weight: 500;
+      color: #000;
+      white-space: nowrap;
+    }
+
+    .apply_btn {
+      background: #3d6f3f;
+      color: #fff !important;
+      padding: 8px 14px;
+      border-radius: 5px;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    .search_icon {
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .hamb_icon {
+      width: 30px;
+      border: 0;
+      background: transparent;
+      padding: 0;
+    }
+
+    .hamb_icon span {
+      display: block;
+      height: 3px;
+      background: #000;
+      margin: 6px 0;
+      border-radius: 3px;
+    }
+
+    .dropdown-menu {
+      border: 0;
+      border-radius: 10px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+      padding: 10px 0;
+    }
+
+    .dropdown-item {
+      font-size: 14px;
+      padding: 10px 18px;
+    }
+
+    .dropdown-item:hover {
+      background: #f3f7f3;
+      color: #3d6f3f;
+    }
+
+    .mega_menu_area {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      min-height: 620px;
+      background: #ffd12e;
+      z-index: 9990;
+      padding: 140px 55px 45px;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: 0.3s ease;
+    }
+
+    .mega_menu_area.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .program_card {
+      position: relative;
+      height: 330px;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #000;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.16);
+    }
+
+    .program_card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.88;
+      transition: 0.4s;
+    }
+
+    .program_card:hover img {
+      transform: scale(1.06);
+    }
+
+    .program_card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 45%, rgba(0, 0, 0, 0.95));
+    }
+
+    .program_tag {
+      position: absolute;
+      top: 25px;
+      right: 0;
+      background: #3d6f3f;
+      color: #fff;
+      padding: 6px 12px;
+      font-size: 18px;
+      font-weight: 700;
+      z-index: 2;
+    }
+
+    .program_text {
+      position: absolute;
+      left: 15px;
+      bottom: 22px;
+      z-index: 2;
+      color: #fff;
+      font-weight: 700;
+      font-size: 21px;
+      line-height: 1.15;
+      padding-right: 45px;
+    }
+
+    .program_text span {
+      color: #ffd12e;
+      display: block;
+      font-size: 19px;
+      font-weight: 500;
+    }
+
+    .plus_btn {
+      position: absolute;
+      right: 15px;
+      bottom: 30px;
+      width: 28px;
+      height: 28px;
+      border: 1px solid #fff;
+      color: #fff;
+      z-index: 3;
+      display: grid;
+      place-items: center;
+      font-size: 24px;
+    }
+
+    .card_link {
+      position: absolute;
+      inset: 0;
+      z-index: 5;
+      font-size: 0;
+    }
+
+    .program_banner {
+      height: 500px;
+      overflow: hidden;
+    }
+
+    .program_banner_slider,
+    .swiper-wrapper,
+    .swiper-slide,
+    .banner_img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .banner_img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .swiper-slide {
+      opacity: 0;
+    }
+
+    .swiper-slide-active {
+      opacity: 1;
+    }
+
+    .search_overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.92);
+      z-index: 10000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .search_overlay.active {
+      display: flex;
+    }
+
+    .search_close {
+      position: absolute;
+      top: 30px;
+      right: 45px;
+      color: #fff;
+      font-size: 48px;
+      cursor: pointer;
+    }
+
+    .about_one.abt2 {
+      padding: 80px 0;
+      background: #f7f7f7;
+      overflow: hidden;
+    }
+
+    .inspired_grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 58px;
+      align-items: center;
+    }
+
+    .insp_lft figure {
+      margin: 0;
+      overflow: hidden;
+      border-radius: 16px;
+    }
+
+    .insp_lft img {
+      width: 100%;
+      height: 550px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 16px;
+    }
+
+    .insp_rght h3 {
+      font-size: 31px;
+      line-height: 1.35;
+      font-weight: 400;
+      color: #000;
+      margin-bottom: 28px;
+      letter-spacing: -0.8px;
+    }
+
+    .insp_rght p {
+      font-size: 18px;
+      line-height: 1.6;
+      font-weight: 400;
+      color: #000;
+      margin-bottom: 24px;
+    }
+
+    .insp_rght p:last-child {
+      margin-bottom: 0;
+    }
+
+    .insp_rght b {
+      font-weight: 800;
+    }
+
+    .hero-wrapper {
+      width: 100%;
+      background: #f5f5f5;
+    }
+
+    .hero-banner {
+      position: relative;
+      width: 100%;
+      min-height: 550px;
+      background: url("Overview/2.jpg") center center / cover no-repeat;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      position: absolute;
+      top: 22%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(520px, 90%);
+      text-align: center;
+      z-index: 5;
+    }
+
+    .hero-content h1 {
+      color: #0a6b2f;
+      font-size: 34px;
+      line-height: 1.25;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    .hero-content .top-text {
+      font-size: 18px;
+      line-height: 1.5;
+      margin-bottom: 22px;
+    }
+
+    .hero-content .desc {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+
+    .apply-btn {
+      display: inline-block;
+      background: #4c7439;
+      color: #fff;
+      text-decoration: none;
+      padding: 12px 30px;
+      border-radius: 4px;
+      font-size: 18px;
+      font-weight: 700;
+      transition: 0.3s ease;
+    }
+
+    .apply-btn:hover {
+      background: #355c28;
+      color: #fff;
+    }
+
+    @media (max-width: 1366px) {
+      .logo_wrap img {
+        max-width: 250px;
+      }
+
+      .program_banner {
+        height: 430px;
+      }
+
+      .program_card {
+        height: 300px;
+      }
+
+      .program_text {
+        font-size: 18px;
+      }
+
+      .program_text span {
+        font-size: 17px;
+      }
+
+      .insp_lft img {
+        height: 520px;
+      }
+
+      .insp_rght h3 {
+        font-size: 30px;
+      }
+
+      .insp_rght p {
+        font-size: 17px;
+      }
+    }
+
+    @media (max-width: 1199px) {
+      .logo_wrap img {
+        max-width: 230px;
+      }
+    }
+
+    @media (max-width: 991px) {
+      .main_header {
+        background: #fff;
+        padding: 12px 0;
+      }
+
+      .program_banner {
+        height: 360px;
+        margin-top: 78px;
+      }
+
+      .mega_menu_area {
+        display: none;
+      }
+
+      .inspired_grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .insp_lft img {
+        height: 420px;
+      }
+
+      .insp_rght {
+        padding-left: 0;
+      }
+
+      .insp_rght h3 {
+        font-size: 28px;
+      }
+
+      .insp_rght p {
+        font-size: 17px;
+        margin-bottom: 22px;
+      }
+
+      .hero-banner {
+        background: #f4c542;
+        min-height: auto;
+        padding: 70px 20px;
+      }
+
+      .hero-content {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        width: 100%;
+        max-width: 650px;
+        margin: auto;
+      }
+    }
+
+    @media (max-width: 575px) {
+      .container-fluid.px-4 {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+      }
+
+      .logo_wrap img {
+        max-width: 205px;
+      }
+
+      .program_banner {
+        height: 300px;
+        margin-top: 72px;
+      }
+
+      .about_one.abt2 {
+        padding: 45px 0;
+      }
+
+      .insp_lft img {
+        height: 330px;
+      }
+
+      .insp_rght h3 {
+        font-size: 24px;
+      }
+
+      .insp_rght p {
+        font-size: 16px;
+      }
+
+      .hero-banner {
+        padding: 50px 16px;
+      }
+
+      .hero-content h1 {
+        font-size: 26px;
+      }
+
+      .hero-content .top-text {
+        font-size: 15px;
+      }
+
+      .hero-content .desc {
+        font-size: 14px;
+      }
+
+      .apply-btn {
+        width: 100%;
+        max-width: 220px;
+        font-size: 16px;
+      }
+
+      .search_close {
+        top: 20px;
+        right: 25px;
+        font-size: 40px;
+      }
+    }
+
+    /* Section */
+.ceo-section {
+    padding-top: 80px;
+    padding-bottom:0px;
+  background-image: url("Overview/5.jpg");
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  min-height: 90vh;
+  height: auto;
+}
+
+/* Image */
+.ceo-img {
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Quote */
+.ceo-quote {
+  font-size: 38px;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
+
+/* Text */
+.ceo-text {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #dcdcdc;
+  margin-bottom: 15px;
+}
+
+/* CEO Info */
+.ceo-info h5 {
+  color: #ffcc00;
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+.ceo-info span {
+  font-size: 14px;
+  color: #ccc;
+}
+.ceo-section {
+  position: relative;
+}
+
+.ceo-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("Overview/5.jpg") center/cover no-repeat;
+}
+
+.ceo-section .container {
+  position: relative;
+  z-index: 1;
+}
+/* Responsive */
+@media (max-width: 768px) {
+  .ceo-section {
+    text-align: center;
+  }
+
+  .ceo-img {
+    margin-bottom: 30px;
+  }
+  @media (max-width: 768px) {
+  .ceo-quote {
+    font-size: 26px;
+  }
+}
+}
+ 
+
+/* SECTION */
+.worldmap_section_wrapper {
+  padding: 80px 0;
+  background: #f2f2f2;
+}
+
+/* HEADING */
+.world_map h2 {
+  font-size: 42px;
+  font-weight: 700;
+  color: #2e5d3d;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: #333;
+  max-width: 700px;
+  margin: 0 auto 40px;
+}
+
+/* VIDEO */
+.map_video {
+  position: relative;
+}
+
+.map_video video {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* OVERLAY CONTENT */
+.map_content {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  text-align: left;
+}
+
+.map_content h3 {
+  font-size: 60px;
+  font-weight: 700;
+  color: #2e5d3d;
+}
+
+.map_content p {
+  font-size: 18px;
+  color: #333;
+  margin-top: 10px;
+  line-height: 1.4;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+
+  .world_map h2 {
+    font-size: 28px;
+  }
+
+  .subtitle {
+    font-size: 15px;
+  }
+
+  .map_content {
+    position: static;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .map_content h3 {
+    font-size: 40px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+  <header class="main_header" id="mainHeader">
+    <div class="container-fluid px-4">
+      <div class="d-flex justify-content-between align-items-center">
+
+        <div class="logo_wrap">
+          <a href="https://glaonline.com/">
+            <img src="https://glaonline.com/siteassets/images/green-logo.webp" alt="GLA Online">
+          </a>
+        </div>
+
+        <div class="d-flex flex-column align-items-end gap-3">
+          <ul class="nav align-items-center gap-3 d-none d-xl-flex">
+            <li><a class="nav-link" href="mailto:onlineadmissions@gla.ac.in">onlineadmissions@gla.ac.in</a></li>
+            <li><a class="nav-link" href="tel:+91-9568536853">+91-9568536853</a></li>
+            <li><a class="apply_btn" href="https://apply.glaonline.com/" target="_blank">Apply Now</a></li>
+            <li><a class="apply_btn" href="https://www.myglaonline.com/" target="_blank">Student Login</a></li>
+          </ul>
+
+          <div class="d-flex align-items-center gap-4">
+            <ul class="nav align-items-center gap-3 d-none d-xl-flex">
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">About Us</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#overview">Overview</a></li>
+                  <li><a class="dropdown-item" href="#journey">Journey</a></li>
+                  <li><a class="dropdown-item" href="#vision">Vision & Mission</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Admissions</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#admissions">Admissions</a></li>
+                  <li><a class="dropdown-item" href="#fees">Fees</a></li>
+                  <li><a class="dropdown-item" href="#process">Process</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="javascript:void(0)" id="programToggle">Programs</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="https://glaonline.com/contact-us">Contact Us</a>
+              </li>
+            </ul>
+
+            <svg class="search_icon" onclick="openSearch()" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="M21 21l-4.35-4.35"></path>
+            </svg>
+
+            <span class="vr d-none d-md-block"></span>
+
+            <button class="hamb_icon d-xl-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <section class="mega_menu_area" id="programMega">
+    <div class="container-fluid">
+      <div class="row g-4">
+
+        <div class="col">
+          <div class="program_card">
+            <span class="program_tag">PG</span>
+            <img src="https://glaonline.com/uploads/course_group/6928264fb0a231764238927.webp" alt="MBA">
+            <div class="program_text"><span>Master of</span>Business Administration</div>
+            <div class="plus_btn">+</div>
+            <a href="https://glaonline.com/program/mba" class="card_link">MBA</a>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="program_card">
+            <span class="program_tag">PG</span>
+            <img src="https://glaonline.com/uploads/course_group/68aef588901ea1756296584.webp" alt="MCA">
+            <div class="program_text"><span>Master of</span>Computer Applications</div>
+            <div class="plus_btn">+</div>
+            <a href="https://glaonline.com/program/mca" class="card_link">MCA</a>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="program_card">
+            <span class="program_tag">UG</span>
+            <img src="https://glaonline.com/uploads/course_group/68aedd4b265be1756290379.webp" alt="BBA">
+            <div class="program_text"><span>Bachelor of</span>Business Administration</div>
+            <div class="plus_btn">+</div>
+            <a href="https://glaonline.com/program/bba" class="card_link">BBA</a>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="program_card">
+            <span class="program_tag">UG</span>
+            <img src="https://glaonline.com/uploads/course_group/68aedd8f853ee1756290447.webp" alt="BCA">
+            <div class="program_text"><span>Bachelor of</span>Computer Applications</div>
+            <div class="plus_btn">+</div>
+            <a href="https://glaonline.com/program/bca" class="card_link">BCA</a>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="program_card">
+            <span class="program_tag">UG</span>
+            <img src="https://glaonline.com/uploads/course_group/68aeddd46cb4b1756290516.webp" alt="BCom">
+            <div class="program_text"><span>Bachelor of</span>Commerce (Hons.)</div>
+            <div class="plus_btn">+</div>
+            <a href="https://glaonline.com/program/bcom-hons" class="card_link">BCom</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="mobileMenu">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title">Menu</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+
+    <div class="offcanvas-body">
+      <ul class="navbar-nav gap-2">
+        <li><a class="nav-link" href="#overview">About Us</a></li>
+        <li><a class="nav-link" href="#admissions">Admissions</a></li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Programs</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="https://glaonline.com/program/mba">MBA</a></li>
+            <li><a class="dropdown-item" href="https://glaonline.com/program/mca">MCA</a></li>
+            <li><a class="dropdown-item" href="https://glaonline.com/program/bba">BBA</a></li>
+            <li><a class="dropdown-item" href="https://glaonline.com/program/bca">BCA</a></li>
+            <li><a class="dropdown-item" href="https://glaonline.com/program/bcom-hons">BCom</a></li>
+          </ul>
+        </li>
+
+        <li><a class="nav-link" href="https://glaonline.com/faculty">Meet Our Faculty</a></li>
+        <li><a class="nav-link" href="https://glaonline.com/faq">FAQs</a></li>
+        <li><a class="nav-link" href="https://glaonline.com/blog">Blog</a></li>
+        <li><a class="nav-link" href="https://glaonline.com/contact-us">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_overlay" id="searchOverlay">
+    <span class="search_close" onclick="closeSearch()">×</span>
+    <form class="d-flex gap-2 w-100 px-3" style="max-width:650px;" action="https://glaonline.com/search">
+      <input class="form-control rounded-pill px-4" type="text" name="search" id="searchInput" placeholder="Search..." required>
+      <button class="btn rounded-circle text-white" style="background:#3d6f3f;width:58px;height:58px;" type="submit">⌕</button>
+    </form>
+  </div>
+
+  <section class="program_banner abtbanner">
+    <div class="program_banner_slider swiper">
+      <div class="swiper-wrapper">
+
+        <div class="swiper-slide">
+          <div class="banner_img">
+            <img src="https://glaonline.com/uploads/home/banner_images/69895c46295431770609734.webp" alt="Banner 1">
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="banner_img">
+            <img src="https://glaonline.com/uploads/home/banner_images/69895b4e947cc1770609486.webp" alt="Banner 2">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="about_one abt2">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+
+          <div class="inspired_grid">
+
+            <div class="insp_lft" data-aos="fade-right" data-aos-duration="1200" data-aos-easing="ease-out-cubic">
+              <figure class="image">
+                <img src="https://glaonline.com/siteassets/images/shree-ganesh-lal-ji.webp"
+                     alt="Late Shri Ganeshi Lal Agrawal"
+                     class="img-fluid w-100">
+              </figure>
+            </div>
+
+            <div class="insp_rght" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="200">
+              <h3>
+                Everything began with a belief - education should never be a privilege,
+                but a possibility for every child.
+              </h3>
+
+              <p>
+                A belief held by the Late Shri Ganeshi Lal Agrawal - that every child deserves
+                an education, irrespective of their circumstances. When he passed away, his son,
+                Shri Narayan Das Agrawal, still in his teens, took over the weight of family
+                responsibilities. His own education paused, but his father’s dream continued
+                to guide him.
+              </p>
+
+              <p>
+                Holding on to that purpose, he laid the foundation of GLA Online University -
+                in Mathura - built not just with resources, but with resilience, empathy, and
+                a commitment to make learning accessible to all.
+              </p>
+
+              <p>
+                What began decades ago has now shaped the futures of
+                <b>46,000+ GLAdiators,</b> proving that when education becomes reachable,
+                dreams truly take flight!
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero-wrapper">
+    <div class="hero-banner">
+
+      <div class="hero-content">
+        <h1>#ApneSapneApneShaharSe</h1>
+
+        <p class="top-text">
+          Our goal is to make quality education accessible to learners at
+          every nook and corner of the globe.
+        </p>
+
+        <p class="desc">
+          We offer flexible and affordable online programs tailored to the needs of
+          modern learners. Focusing on emerging fields, we aim to build skills,
+          foster innovation, and nurture future leaders and entrepreneurs. Our
+          commitment to academic excellence and learner success remains at the
+          heart of everything we do.
+        </p>
+
+        <a href="https://apply.glaonline.com/" class="apply-btn" target="_blank">Apply Now</a>
+      </div>
+
+    </div>
+  </section>
+<section class="worldmap_section_wrapper">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-xl-10 col-lg-11">
+
+        <div class="world_map text-center">
+
+          <!-- Heading -->
+          <h2>A Global Network of Change-Makers</h2>
+
+          <p class="subtitle">
+            Our GLAdiators span across the globe, contributing to leading
+            companies, startups, and research institutions
+          </p>
+
+          <!-- Video Map -->
+          <div class="map_video">
+            <video autoplay muted loop playsinline>
+              <source src="https://glaonline.com/siteassets/images/world-map.mp4" type="video/mp4">
+            </video>
+
+            <!-- Overlay Content -->
+            <div class="map_content" data-aos="fade-up">
+              <h3>86%</h3>
+              <p>Average placement<br>over the last 5 years.</p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <script>
+    AOS.init({
+      once: true,
+      offset: 120,
+      duration: 1000,
+      easing: "ease-in-out"
+    });
+
+    const header = document.getElementById("mainHeader");
+    const programToggle = document.getElementById("programToggle");
+    const programMega = document.getElementById("programMega");
+
+    function checkHeaderScroll() {
+      if (window.scrollY > 10) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+    }
+
+    window.addEventListener("scroll", checkHeaderScroll);
+    checkHeaderScroll();
+
+    let hideTimer;
+
+    function showMegaMenu() {
+      clearTimeout(hideTimer);
+      programMega.classList.add("active");
+      header.classList.add("mega-open");
+    }
+
+    function hideMegaMenu() {
+      hideTimer = setTimeout(() => {
+        programMega.classList.remove("active");
+        header.classList.remove("mega-open");
+      }, 200);
+    }
+
+    if (programToggle && programMega) {
+      programToggle.addEventListener("mouseenter", showMegaMenu);
+      programToggle.addEventListener("mouseleave", hideMegaMenu);
+      programMega.addEventListener("mouseenter", showMegaMenu);
+      programMega.addEventListener("mouseleave", hideMegaMenu);
+    }
+
+    function openSearch() {
+      document.getElementById("searchOverlay").classList.add("active");
+      setTimeout(() => document.getElementById("searchInput").focus(), 100);
+    }
+
+    function closeSearch() {
+      document.getElementById("searchOverlay").classList.remove("active");
+    }
+
+    new Swiper(".program_banner_slider", {
+      loop: true,
+      effect: "fade",
+      speed: 1000,
+      fadeEffect: {
+        crossFade: true
+      },
+      autoplay: {
+        delay: 8000,
+        disableOnInteraction: false
+      }
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") {
+        closeSearch();
+        programMega.classList.remove("active");
+        header.classList.remove("mega-open");
+      }
+    });
+  </script>
+
+</body>
+</html>
