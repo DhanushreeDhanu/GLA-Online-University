@@ -11,35 +11,39 @@ body {
   font-family: Arial, sans-serif;
 }
 
-/* ===== HOME BANNER ===== */
+/* ===== HOME BANNER CLEAN VERSION ===== */
 .home_banner {
   position: relative;
   width: 100%;
-  height: auto;
   overflow: hidden;
 }
 
+/* full screen banner */
+.home_banner,
 .home_banner .swiper,
 .home_banner .swiper-wrapper,
 .home_banner .swiper-slide {
-  width: 100%;
-  height: 100%;
+ height: auto !important;
 }
 
+/* image should fully cover */
 .home_banner img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto !important;
+  object-fit: contain !important;
+  display: block;
 }
 
+/* overlay (optional, keep if needed) */
 .home_banner::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(to right, rgba(0,0,0,0.75), rgba(0,0,0,0.25));
+  background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.2));
   z-index: 1;
 }
 
+/* keep content above overlay */
 .home_slider {
   position: relative;
   z-index: 2;
@@ -83,7 +87,7 @@ body {
 
 /* ===== SWIPER DEFAULT ===== */
 .swiper {
-  padding-bottom: 20px;
+  padding-bottom: 0px;
 }
 
 .swiper-slide {
@@ -1682,5 +1686,175 @@ body {
   .glaFooter_social{
     order:3;
     margin-top:10px;
+  }
+}
+
+
+
+
+
+.main_header {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99999;
+  background: transparent !important;
+  transition: all 0.3s ease;
+}
+
+.main_header.scrolled {
+  background: #fff !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+}
+
+/* logo change */
+.headlogo {
+  display: block;
+}
+
+.stickylogo {
+  display: none;
+}
+
+.main_header.scrolled .headlogo {
+  display: none;
+}
+
+.main_header.scrolled .stickylogo {
+  display: block;
+}
+
+/* text/icons white before scroll */
+.main_header a,
+.main_header svg path {
+  color: #fff;
+  fill: #fff;
+  stroke: #fff;
+}
+
+/* text/icons black after scroll */
+.main_header.scrolled a {
+  color: #000 !important;
+}
+
+.main_header.scrolled svg path {
+  fill: #000 !important;
+  stroke: #000 !important;
+}
+
+/* keep green buttons */
+.main_header .apply_btn {
+  background: #3f7b3f;
+  color: #fff !important;
+}
+.home_banner .swiper-pagination {
+  position: absolute;
+  left: 8%;
+  bottom: 40px;
+  width: auto;
+  text-align: left;
+}
+
+
+.home_banner {
+  background: #0f2f52; /* fallback color */
+}
+.menu_serach,
+.search_box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-icon,
+.search_box a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.menu_serach svg,
+.menu_serach i {
+  vertical-align: middle;
+}
+/* =================================THIS IS THE END=============================================== */
+/* hide by default */
+.mobile-apply-btn,
+.mobile-bottom-nav {
+  display: none;
+}
+
+/* =========================
+   MOBILE + TABLET ONLY
+========================= */
+@media (max-width: 1024px) {
+
+  body {
+    padding-bottom: 95px;
+  }
+
+  /* APPLY BUTTON */
+  .mobile-apply-btn {
+    display: block;
+    position: fixed;
+    right: 20px;
+    bottom: 110px;
+    z-index: 99999;
+    background: #4a7746;
+    color: #fff;
+    padding: 12px 22px;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 10px;
+  }
+
+  /* BOTTOM NAV */
+  .mobile-bottom-nav {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    position: fixed;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    z-index: 99999;
+    background: #2f6d82;
+    border-radius: 20px 20px 8px 8px;
+    overflow: hidden;
+  }
+
+  .mobile-bottom-nav a {
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    padding: 10px 5px 12px;
+    font-size: 13px;
+    border-right: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .mobile-bottom-nav a:last-child {
+    border-right: none;
+  }
+
+  .mobile-bottom-nav i {
+    display: block;
+    font-size: 26px;
+    margin-bottom: 5px;
+  }
+
+  .mobile-bottom-nav span {
+    display: block;
+  }
+}
+
+/* =========================
+   LAPTOP / DESKTOP HIDE
+========================= */
+@media (min-width: 1024px) {
+  .mobile-apply-btn,
+  .mobile-bottom-nav {
+    display: none !important;
   }
 }
