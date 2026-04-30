@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Use your same full code, but fix these 3 parts -->
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chancellor | GLA Online</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', Arial, sans-serif;
+            background: #f4f4f4;
+            color: #111;
+            overflow-x: hidden
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit
+        }
+
+        img {
+            max-width: 100%;
+            display: block
+        }
+
+        :root {
+            --green: #2f6f35;
+            --dark-green: #0d5b2c;
+            --yellow: #ffd332;
+            --footer: #1d1714;
+        }
+
+        /* HEADER */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 9999;
+            background: #fff;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, .08);
+        }
+
+        .header-wrap {
+            padding: 24px 68px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px
+        }
+
+        .logo img {
+            width: 350px;
+            max-width: 100%
+        }
+
+        .right-head {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 18px
+        }
+
+        .top-links,
+        .main-nav {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            margin: 0;
+            padding: 0;
+            list-style: none
+        }
+
+        .top-links a {
+            font-size: 13px;
+            color: #111
+        }
+
+        .top-links i {
+            color: var(--green);
+            margin-right: 8px
+        }
+
+        .apply-btn,
+        .student-btn {
+            background: var(--green);
+            color: #fff !important;
+            padding: 10px 18px;
+            border-radius: 4px;
+          
+        }
+
+        .main-nav a {
+            font-size: 15px;
+     
+            color: #000
+        }
+
+        .main-nav .dropdown-menu {
+            border: 0;
+            border-radius: 0;
+            padding: 0;
+            background: linear-gradient(#6e8c3f, #ffd332);
+            min-width: 230px
+        }
+
+        .main-nav .dropdown:hover .dropdown-menu {
+            display: block
+        }
+
+        .dropdown-item {
+            color: #fff !important;
+         
+            padding: 15px 18px;
+            font-size: 11px
+        }
+
+        .dropdown-item:hover {
+            background: #6e8c3f
+        }
+
+        .search-btn,
+        .hamb-btn {
+            border: 0;
+            background: transparent;
+            font-size: 30px;
+            line-height: 1;
+            color: #000;
+            padding: 0;
+            background-color: linear-gradient(#6e8c3f, #ffd332); ;
+        }
+
+        .divider {
+            height: 32px;
+            width: 1px;
+            background: #bbb
+        }
+
+        /* MEGA MENU */
+        .mega-menu {
+            position: fixed;
+            top: 122px;
+            left: 0;
+            width: 100%;
+            background: #ffd332;
+            z-index: 9998;
+            padding: 38px 60px;
+            display: none;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, .18)
+        }
+
+        .mega-menu.active {
+            display: block
+        }
+
+        .program-card {
+            height: 300px;
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+            background: #000;
+            box-shadow: 0 12px 25px rgba(0, 0, 0, .18)
+        }
+
+        .program-card img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            opacity: .9;
+            transition: .35s
+        }
+
+        .program-card:hover img {
+            transform: scale(1.06)
+        }
+
+        .program-card:after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 38%, rgba(0, 0, 0, .96))
+        }
+
+        .program-tag {
+            position: absolute;
+            top: 22px;
+            right: 0;
+            background: var(--green);
+            color: #fff;
+            font-size: 18px;
+            font-weight: 800;
+            padding: 5px 12px;
+            z-index: 2
+        }
+
+        .program-title {
+            position: absolute;
+            left: 18px;
+            bottom: 25px;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 900;
+            z-index: 2;
+            line-height: 1.15
+        }
+
+        .program-title span {
+            display: block;
+            color: #ffd332;
+            font-weight: 400
+        }
+
+        .plus {
+            position: absolute;
+            right: 18px;
+            bottom: 27px;
+            color: #fff;
+            border: 1px solid #fff;
+            width: 30px;
+            height: 30px;
+            display: grid;
+            place-items: center;
+            font-size: 25px;
+            z-index: 2
+        }
+
+        .card-cover {
+            position: absolute;
+            inset: 0;
+            z-index: 4;
+            font-size: 0
+        }
+
+        /* SEARCH */
+        .search-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .92);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px
+        }
+
+        .search-overlay.active {
+            display: flex
+        }
+
+        .search-close {
+            position: absolute;
+            top: 28px;
+            right: 42px;
+            font-size: 52px;
+            color: #fff;
+            cursor: pointer
+        }
+
+        .search-form {
+            max-width: 680px;
+            width: 100%;
+            display: flex;
+            gap: 12px
+        }
+
+        .search-form input {
+            height: 60px;
+            border-radius: 999px;
+            border: 0;
+            padding: 0 28px;
+            font-size: 18px
+        }
+
+        .search-form button {
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+            border: 0;
+            background: var(--green);
+            color: #fff;
+            font-size: 24px
+        }
+
+        /* HAMBURGER PANEL */
+        .side-menu {
+            position: fixed;
+            top: 0;
+            right: -390px;
+            width: 360px;
+            max-width: 90%;
+            height: 100vh;
+            background: #fff;
+            z-index: 10001;
+            padding: 35px 28px;
+            transition: .35s;
+            box-shadow: -10px 0 30px rgba(0, 0, 0, .18);
+            overflow: auto
+        }
+
+        .side-menu.active {
+            right: 0
+        }
+
+        .side-close {
+            border: 0;
+            background: transparent;
+            font-size: 38px;
+            float: right
+        }
+
+        .side-menu ul {
+            list-style: none;
+            margin: 60px 0 0;
+            padding: 0
+        }
+
+        .side-menu li {
+            border-bottom: 1px solid #eee
+        }
+
+        .side-menu a {
+            display: block;
+            padding: 15px 0;
+            font-size: 18px;
+            font-weight: 700
+        }
+
+        .side-sub {
+            display: none !important;
+            margin: 0 !important;
+            padding-left: 15px !important;
+            background: #f8f8f8
+        }
+
+        .side-sub.open {
+            display: block !important
+        }
+
+        /* HERO */
+        .leader-hero {
+            margin-top: 122px;
+            min-height: 390px;
+            position: relative;
+            background: url('Leadership/0.jpg') left center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            height: 300px;
+        }
+
+        .leader-hero:before {
+            content: "";
+            position: absolute;
+            inset: 0;
+           
+        }
+
+        .leader-hero .container {
+            position: relative;
+            z-index: 1
+        }
+
+        .leader-hero h1 {
+            font-size: 42px;
+            line-height: 1.18;
+            font-weight: 600;
+            margin-bottom: 28px
+        }
+
+        .leader-hero p {
+            font-size: 22px;
+            line-height: 1.4;
+            max-width: 860px;
+            margin: 0 auto 48px
+        }
+
+        .leader-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 28px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap
+        }
+
+        .leader-tabs a {
+            display: block;
+            color: #fff;
+            font-size: 19px;
+            padding: 0 10px 28px;
+            position: relative
+        }
+
+        .leader-tabs li.active a {
+            color: var(--yellow);
+          
+        }
+
+        .leader-tabs li.active a:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 5px;
+            background: var(--yellow)
+        }
+
+        /* CHANCELLOR */
+        .chancellor-sec {
+            padding: 72px 0 110px;
+            background: #f6f6f6
+        }
+
+        .chancellor-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 65px;
+            align-items: start;
+            max-width: 1110px;
+            margin: auto
+        }
+
+        .left-photo {
+            position: relative;
+            padding-top: 28px
+        }
+
+        .quote-mark {
+            position: absolute;
+            top: 0;
+            left: 20px;
+            width: 120px;
+            opacity: .7;
+            z-index: 2
+        }
+
+        .person-img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            object-position: center top;
+            background: #ead8cf
+        }
+
+        .right-text h5 {
+            font-size: 24px;
+            line-height: 1.35;
+            color: #477a3e;
+            font-weight: 400;
+            margin: 0 0 28px
+        }
+
+        .right-text p {
+            font-size: 15px;
+            line-height: 1.55;
+            margin-bottom: 15px;
+            color: #111
+        }
+
+        .sign-box {
+            border-top: 1px solid #ccc;
+            margin-top: 30px;
+            padding-top: 28px;
+            font-size: 16px;
+        }
+
+        .sign-box p {
+            margin: 0 0 5px
+        }
+
+        .sign-box h4 {
+            font-size: 24px;
+            margin: 0 0 4px;
+            color: #000
+        }
+
+        /* FOOTER */
+        .footer {
+            background: var(--footer);
+            color: #fff;
+            padding: 38px 0 30px
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px 24px;
+            flex-wrap: wrap;
+            margin: 0;
+            padding: 0;
+            list-style: none
+        }
+
+        .footer-links a {
+            font-size: 14px;
+          
+            color: #fff
+        }
+
+        .footer-line {
+            height: 1px;
+            background: rgba(255, 255, 255, .25);
+            margin: 26px 0
+        }
+
+        .footer-bottom {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            gap: 18px
+        }
+
+        .footer-bottom p {
+            font-size: 13px;
+            font-weight: 700;
+            margin: 0
+        }
+
+        .credit {
+            text-align: right
+        }
+
+        .social {
+            display: flex;
+            gap: 18px;
+            align-items: center;
+            justify-content: center
+        }
+
+        .social a {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: #050505;
+            display: grid;
+            place-items: center;
+            color: #fff;
+            font-size: 15px
+        }
+
+        .social a:nth-child(1) {
+            color: #3858ff
+        }
+
+        .social a:nth-child(2) {
+            color: red
+        }
+
+        .social a:nth-child(3) {
+            color: #d34aa1
+        }
+
+        /* FLOAT APPLY */
+        .float-apply {
+            position: fixed;
+            right: 0;
+            bottom: 22px;
+            background: var(--green);
+            color: #fff !important;
+        
+            padding: 16px 24px;
+            border-radius: 6px 0 0 6px;
+            z-index: 9997;
+            font-size: 15px
+        }
+
+        /* MOBILE BOTTOM */
+        .mobile-bottom {
+            display: none
+        }
+
+        .mobile-panel {
+            display: none
+        }
+
+        @media(max-width:1199px) {
+            .header-wrap {
+                padding: 20px 36px
+            }
+
+            .logo img {
+                width: 360px
+            }
+
+            .top-links,
+            .main-nav {
+                gap: 18px
+            }
+
+            .leader-hero h1 {
+                font-size: 40px
+            }
+        }
+
+        @media(max-width:991px) {
+            .header-wrap {
+                padding: 16px 20px
+            }
+
+            .logo img {
+                width: 290px
+            }
+
+            .right-head {
+                gap: 0
+            }
+
+            .top-links,
+            .main-nav {
+                display: none
+            }
+
+            .leader-hero {
+                margin-top: 91px;
+                min-height: 360px
+            }
+
+            .leader-hero h1 {
+                font-size: 34px
+            }
+
+            .leader-hero p {
+                font-size: 20px
+            }
+
+            .chancellor-grid {
+                grid-template-columns: 1fr;
+                gap: 35px
+            }
+
+            .person-img {
+                height: auto
+            }
+
+            .footer-bottom {
+                display: flex;
+                flex-direction: column;
+                text-align: center
+            }
+
+            .credit {
+                text-align: center
+            }
+
+            .float-apply {
+                bottom: 100px;
+                right: 16px;
+                border-radius: 8px
+            }
+
+            .mobile-bottom {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                position: fixed;
+                left: 10px;
+                right: 10px;
+                bottom: 8px;
+                z-index: 9999;
+                background: #2f6d82;
+                border-radius: 20px 20px 8px 8px;
+                overflow: hidden
+            }
+
+            .mobile-bottom button {
+                border: 0;
+                background: transparent;
+                color: #fff;
+                padding: 10px 4px;
+                font-size: 13px;
+                border-right: 1px solid rgba(255, 255, 255, .2)
+            }
+
+            .mobile-bottom button:last-child {
+                border-right: 0
+            }
+
+            .mobile-bottom i {
+                display: block;
+                font-size: 24px;
+                margin-bottom: 4px
+            }
+
+            .mobile-panel {
+                position: fixed;
+                left: 10px;
+                right: 10px;
+                bottom: 78px;
+                background: #fff;
+                z-index: 9998;
+                border-radius: 14px;
+                padding: 20px;
+                box-shadow: 0 0 25px rgba(0, 0, 0, .25);
+                max-height: 70vh;
+                overflow: auto
+            }
+
+            .mobile-panel.active {
+                display: block
+            }
+
+            .mobile-panel h4 {
+                font-weight: 900;
+                color: var(--green);
+                margin-bottom: 15px
+            }
+
+            .mobile-panel a {
+                display: block;
+                padding: 12px 0;
+                border-bottom: 1px solid #eee;
+                font-weight: 700
+            }
+
+            .mega-menu {
+                display: none !important
+            }
+        }
+
+        @media(max-width:575px) {
+            .logo img {
+                width: 230px
+            }
+
+            .header-wrap {
+                padding: 14px
+            }
+
+            .leader-hero {
+                margin-top: 77px;
+                min-height: 330px
+            }
+
+            .leader-hero h1 {
+                font-size: 27px
+            }
+
+            .leader-hero p {
+                font-size: 16px;
+                margin-bottom: 28px
+            }
+
+            .leader-tabs {
+                gap: 8px
+            }
+
+            .leader-tabs a {
+                font-size: 15px;
+                padding-bottom: 18px
+            }
+
+            .chancellor-sec {
+                padding: 45px 0 80px
+            }
+
+            .right-text h5 {
+                font-size: 22px
+            }
+
+            .right-text p {
+                font-size: 15px
+            }
+
+            .footer-links {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                text-align: left
+            }
+
+            .float-apply {
+                font-size: 15px;
+                padding: 12px 18px
+            }
+
+            .quote-mark {
+                width: 85px
+            }
+
+            .hamb-btn,
+            .search-btn {
+                font-size: 28px
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="main-header">
+        <div class="header-wrap">
+            <a href="https://glaonline.com/" class="logo">
+                <img src="https://glaonline.com/siteassets/images/green-logo.webp" alt="GLA Online">
+            </a>
+
+            <div class="right-head">
+                <ul class="top-links">
+                    <li><a href="#"><i
+                                class="bi bi-envelope-fill"></i>onlineadmissions@gla.ac.in</a></li>
+                    <li><a href="tel:+919568536853"><i class="bi bi-telephone-fill"></i>+91-9568536853</a></li>
+                    <li><a href="Apply.html" target="_blank" class="apply-btn">Apply Now</a></li>
+                    <li><a href="Student.html" target="_blank" class="student-btn">Student Login</a>
+                    </li>
+                </ul>
+
+                <div class="d-flex align-items-center gap-4">
+                    <ul class="main-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">About Us</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="Overview.html">Overview</a>
+                                </li>
+                                <li><a class="dropdown-item"
+                                        href="Chancellor.html">Leadership</a></li>
+                                <li><a class="dropdown-item"
+                                        href="Reco-Accr.html">Recognitions &
+                                        Accreditations</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">Admissions</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item"
+                                        href="#">Admission
+                                        Procedure</a></li>
+                                <li><a class="dropdown-item"
+                                        href="#">Eligibility Criteria</a></li>
+                                <li><a class="dropdown-item" href="#">Fee
+                                        Structure</a></li>
+                                <li><a class="dropdown-item"
+                                        href="#">Evaluation System</a>
+                                </li>
+                                <li><a class="dropdown-item"
+                                        href="#">Academic Calendar</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="javascript:void(0)" id="programToggle">Programs <i
+                                    class="bi bi-caret-down-fill small"></i></a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                    <button class="search-btn" onclick="openSearch()" aria-label="Search"><i
+                            class="bi bi-search"></i></button>
+                    <span class="divider d-none d-md-block"></span>
+                    <button class="hamb-btn" onclick="openSideMenu()" aria-label="Menu"><i
+                            class="bi bi-list"></i></button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="mega-menu" id="megaMenu">
+        <div class="container-fluid">
+            <div class="row g-4 row-cols-1 row-cols-md-5">
+                <div class="col">
+                    <div class="program-card" data-aos="zoom-in" data-aos-duration="800"><span class="program-tag">PG</span><img
+                            src="https://glaonline.com/uploads/course_group/6928264fb0a231764238927.webp" alt="MBA">
+                        <div class="program-title"><span>Master of</span>Business Administration</div>
+                        <div class="plus">+</div><a href="#" class="card-cover">MBA</a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="program-card" data-aos="zoom-in" data-aos-duration="800"><span class="program-tag">PG</span><img
+                            src="https://glaonline.com/uploads/course_group/68aef588901ea1756296584.webp" alt="MCA">
+                        <div class="program-title"><span>Master of</span>Computer Applications</div>
+                        <div class="plus">+</div><a href="#" class="card-cover">MCA</a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="program-card" data-aos="zoom-in" data-aos-duration="800"><span class="program-tag">UG</span><img
+                            src="https://glaonline.com/uploads/course_group/68aedd4b265be1756290379.webp" alt="BBA">
+                        <div class="program-title"><span>Bachelor of</span>Business Administration</div>
+                        <div class="plus">+</div><a href="#" class="card-cover">BBA</a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="program-card" data-aos="zoom-in" data-aos-duration="800"><span class="program-tag">UG</span><img
+                            src="https://glaonline.com/uploads/course_group/68aedd8f853ee1756290447.webp" alt="BCA">
+                        <div class="program-title"><span>Bachelor of</span>Computer Applications</div>
+                        <div class="plus">+</div><a href="#" class="card-cover">BCA</a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="program-card" data-aos="zoom-in" data-aos-duration="800"><span class="program-tag">UG</span><img
+                            src="https://glaonline.com/uploads/course_group/68aeddd46cb4b1756290516.webp" alt="BCom">
+                        <div class="program-title"><span>Bachelor of</span>Commerce (Hons.)</div>
+                        <div class="plus">+</div><a href="#"
+                            class="card-cover">BCom</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="search-overlay" id="searchOverlay">
+        <span class="search-close" onclick="closeSearch()">×</span>
+        <form class="search-form" action="https://glaonline.com/search">
+            <input type="text" name="search" placeholder="Search..." required>
+            <button type="submit"><i class="bi bi-search"></i></button>
+        </form>
+    </div>
+
+    <aside class="side-menu" id="sideMenu">
+        <button class="side-close" onclick="closeSideMenu()">×</button>
+        <ul>
+            <li><a href="#">Meet Our Faculty</a></li>
+            <li><a href="javascript:void(0)" onclick="toggleSub(this)">Events @ GLA <i
+                        class="bi bi-chevron-down float-end"></i></a>
+                <ul class="side-sub">
+                    <li><a href="#">News and Events</a></li>
+                    <li><a href="#">Media Coverage</a></li>
+                    <li><a href="#">CDOE Events</a></li>
+                </ul>
+            </li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Testimonials</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="javascript:void(0)" onclick="toggleSub(this)">Quick Links <i
+                        class="bi bi-chevron-down float-end"></i></a>
+                <ul class="side-sub">
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Disclaimer</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Mandatory Disclosure</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+    </aside>
+<main>
+    <section class="leader-hero" data-aos="fade-down" data-aos-duration="1000">
+        <div class="container">
+            <h1>Leadership that Shapes Learning,<br>Learning that Shapes Life.</h1>
+            <p>Empowering learners through guidance, innovation, and<br> values that create real impact beyond
+                classrooms.</p>
+
+            <ul class="leader-tabs">
+                <li class="active"><a href="Chancellor.html">Chancellor</a></li>
+                <li><a href="Vice-Chancellor.html">Vice Chancellor</a></li>
+                <li><a href="Director.html">Director</a></li>
+                <li><a href="Ceo.html">CEO</a></li>
+                <li><a href="Cfo.html">CFO</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="chancellor-sec">
+        <div class="container">
+            <div class="chancellor-grid">
+                <div class="left-photo" data-aos="fade-right" data-aos-duration="1000">
+                    <img class="quote-mark" src="Leadership/1.jpg" alt="Quote">
+                    <img class="person-img" src="Leadership/2.jpg" alt="Narayan Das Agrawal">
+                </div>
+
+                <div class="right-text" data-aos="fade-left" data-aos-duration="1000">
+                    <h5>“Education that Reaches You, Transforms You, and Prepares You for Tomorrow”</h5>
+
+                    <p>At GLA, our mission has always been to make quality education accessible to every learner.
+                        With GLA Online, we have taken a meaningful step towards that vision - bringing flexible,
+                        affordable, and industry-relevant programs to students across India. Whether you are
+                        beginning your academic journey or growing in your career, our programs are designed to
+                        support your ambition with the right guidance and learning environment.</p>
+
+                    <p>I encourage you to stay curious, stay disciplined, and stay committed. Your future is built
+                        by the choices you make today, and I am proud that you chose to learn with us!</p>
+
+                    <p>Welcome to GLA Online.<br>Let’s grow and succeed together</p>
+
+                    <div class="sign-box">
+                        <p>My Blessings,</p>
+                        <h4>Narayan Das Agrawal</h4>
+                        <p>Chancellor, GLA Online University</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+    <footer class="footer" data-aos="fade-up" data-aos-duration="900">
+        <div class="container">
+            <ul class="footer-links">
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Admissions</a></li>
+                <li><a href="#">Programs</a></li>
+                <li><a href="#">Events @ GLA</a></li>
+                <li><a href="#">FAQs</a></li>
+                <li><a href="#">Testimonials</a></li>
+                <li><a href="#">Terms & Conditions</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Disclaimer</a></li>
+                <li><a href="#">Mandatory Disclosure</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+            <div class="footer-line"></div>
+            <div class="footer-bottom">
+                <p>© Copyright 2026 - GLA Online. All Rights Reserved.</p>
+                <div class="social">
+                    <a href="#" target="_blank"><i
+                            class="bi bi-facebook"></i></a>
+                    <a href="javascript:void(0)"><i class="bi bi-youtube"></i></a>
+                    <a href="#" target="_blank"><i class="bi bi-instagram"></i></a>
+                </div>
+                <p class="credit">Website Design and Developed by <a href="#"
+                        target="_blank">Sterco Digitex</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" target="_blank" class="float-apply">Apply Now</a>
+
+    <nav class="mobile-bottom">
+        <button onclick="openMobilePanel('programPanel')"><i class="bi bi-book"></i><span>Programs</span></button>
+        <button onclick="openMobilePanel('admissionPanel')"><i
+                class="bi bi-mortarboard"></i><span>Admission</span></button>
+        <button onclick="openMobilePanel('contactPanel')"><i
+                class="bi bi-telephone-fill"></i><span>Contact</span></button>
+        <button onclick="openMobilePanel('menuPanel')"><i class="bi bi-grid-fill"></i><span>Menu</span></button>
+    </nav>
+
+    <div class="mobile-panel" id="programPanel">
+        <h4>Find Your Program</h4><a href="#">Master of Business Administration</a><a
+            href="#">Master of Computer Applications</a><a
+            href="#">Bachelor of Business Administration</a><a
+            href="#">Bachelor of Computer Applications</a><a
+            href="#">Bachelor of Commerce (Hons.)</a>
+    </div>
+    <div class="mobile-panel" id="admissionPanel">
+        <h4>Admissions</h4><a href="tel:+919568536853">+91-9568536853</a><a
+            href="mailto:onlineadmissions@gla.ac.in">onlineadmissions@gla.ac.in</a><a
+            href="Apply.html">Apply Now</a>
+    </div>
+    <div class="mobile-panel" id="contactPanel">
+        <h4>Contact</h4><a href="tel:+919568536853">Call Us Now</a><a href="#">Contact
+            Us</a>
+    </div>
+    <div class="mobile-panel" id="menuPanel">
+        <h4>Menu</h4><a href="https://glaonline.com/about-us/overview">About Us</a><a
+            href="#">Meet Our Faculty</a><a href="#">FAQs</a><a
+            href="#">Blog</a><a href="#">Contact Us</a>
+    </div>
+
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- AOS JS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+    AOS.init({
+        once: true,
+        offset: 100,
+        duration: 900,
+        easing: 'ease-in-out'
+    });
+
+    const megaMenu = document.getElementById('megaMenu');
+    const programToggle = document.getElementById('programToggle');
+    let megaTimer;
+
+    if (programToggle && megaMenu) {
+        programToggle.addEventListener('mouseenter', () => {
+            clearTimeout(megaTimer);
+            megaMenu.classList.add('active');
+        });
+
+        programToggle.addEventListener('mouseleave', () => {
+            megaTimer = setTimeout(() => megaMenu.classList.remove('active'), 180);
+        });
+
+        megaMenu.addEventListener('mouseenter', () => {
+            clearTimeout(megaTimer);
+            megaMenu.classList.add('active');
+        });
+
+        megaMenu.addEventListener('mouseleave', () => {
+            megaTimer = setTimeout(() => megaMenu.classList.remove('active'), 180);
+        });
+    }
+
+    function openSearch() {
+        document.getElementById('searchOverlay').classList.add('active');
+    }
+
+    function closeSearch() {
+        document.getElementById('searchOverlay').classList.remove('active');
+    }
+
+    function openSideMenu() {
+        document.getElementById('sideMenu').classList.add('active');
+    }
+
+    function closeSideMenu() {
+        document.getElementById('sideMenu').classList.remove('active');
+    }
+
+    function toggleSub(el) {
+        el.nextElementSibling.classList.toggle('open');
+    }
+
+    function openMobilePanel(id) {
+        document.querySelectorAll('.mobile-panel').forEach(panel => {
+            if (panel.id !== id) panel.classList.remove('active');
+        });
+
+        document.getElementById(id).classList.toggle('active');
+    }
+
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') {
+            closeSearch();
+            closeSideMenu();
+            megaMenu.classList.remove('active');
+            document.querySelectorAll('.mobile-panel').forEach(p => p.classList.remove('active'));
+        }
+    });
+
+    document.addEventListener('click', e => {
+        if (!e.target.closest('.mobile-panel') && !e.target.closest('.mobile-bottom')) {
+            document.querySelectorAll('.mobile-panel').forEach(p => p.classList.remove('active'));
+        }
+    });
+</script>
+</body>
+
+</html>

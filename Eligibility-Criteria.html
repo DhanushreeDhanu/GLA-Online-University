@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eligibility | GLA Online</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    *{box-sizing:border-box}
+    body{margin:0;font-family:'Inter',Arial,sans-serif;background:#f4f4f4;color:#111;overflow-x:hidden}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+
+    :root{
+      --green:#2f6f35;
+      --dark-green:#0d5b2c;
+      --yellow:#ffd332;
+      --footer:#1d1714;
+    }
+
+    /* HEADER */
+    .main-header{
+      position:fixed;top:0;left:0;width:100%;z-index:9999;background:#fff;
+      box-shadow:0 2px 12px rgba(0,0,0,.08);
+    }
+    .header-wrap{padding:24px 68px 16px;display:flex;align-items:center;justify-content:space-between;gap:30px}
+    .logo img{width:430px;max-width:100%}
+    .right-head{display:flex;flex-direction:column;align-items:flex-end;gap:18px}
+    .top-links,.main-nav{display:flex;align-items:center;gap:28px;margin:0;padding:0;list-style:none}
+    .top-links a{font-size:16px;font-weight:700;color:#111}
+    .top-links i{color:var(--green);margin-right:8px}
+    .apply-btn,.student-btn{background:var(--green);color:#fff!important;padding:10px 18px;border-radius:4px;font-weight:800}
+    .main-nav a{font-size:17px;font-weight:700;color:#000}
+    .main-nav .dropdown-menu{border:0;border-radius:0;padding:0;background:linear-gradient(#6e8c3f,#ffd332);min-width:230px}
+    .main-nav .dropdown:hover .dropdown-menu{display:block}
+    .dropdown-item{color:#fff!important;font-weight:800;padding:15px 18px;font-size:15px}
+    .dropdown-item:hover{background:#6e8c3f}
+    .search-btn,.hamb-btn{border:0;background:transparent;font-size:32px;line-height:1;color:#000;padding:0}
+    .divider{height:32px;width:1px;background:#bbb}
+
+    /* MEGA MENU */
+    .mega-menu{position:fixed;top:122px;left:0;width:100%;background:#ffd332;z-index:9998;padding:38px 60px;display:none;box-shadow:0 15px 35px rgba(0,0,0,.18)}
+    .mega-menu.active{display:block}
+    .program-card{height:300px;border-radius:6px;overflow:hidden;position:relative;background:#000;box-shadow:0 12px 25px rgba(0,0,0,.18)}
+    .program-card img{height:100%;width:100%;object-fit:cover;opacity:.9;transition:.35s}
+    .program-card:hover img{transform:scale(1.06)}
+    .program-card:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 38%,rgba(0,0,0,.96))}
+    .program-tag{position:absolute;top:22px;right:0;background:var(--green);color:#fff;font-size:18px;font-weight:800;padding:5px 12px;z-index:2}
+    .program-title{position:absolute;left:18px;bottom:25px;color:#fff;font-size:20px;font-weight:900;z-index:2;line-height:1.15}
+    .program-title span{display:block;color:#ffd332;font-weight:500}
+    .plus{position:absolute;right:18px;bottom:27px;color:#fff;border:1px solid #fff;width:30px;height:30px;display:grid;place-items:center;font-size:25px;z-index:2}
+    .card-cover{position:absolute;inset:0;z-index:4;font-size:0}
+
+    /* SEARCH */
+    .search-overlay{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:10000;display:none;align-items:center;justify-content:center;padding:20px}
+    .search-overlay.active{display:flex}
+    .search-close{position:absolute;top:28px;right:42px;font-size:52px;color:#fff;cursor:pointer}
+    .search-form{max-width:680px;width:100%;display:flex;gap:12px}
+    .search-form input{height:60px;border-radius:999px;border:0;padding:0 28px;font-size:18px}
+    .search-form button{height:60px;width:60px;border-radius:50%;border:0;background:var(--green);color:#fff;font-size:24px}
+
+    /* HAMBURGER PANEL */
+    .side-menu{position:fixed;top:0;right:-390px;width:360px;max-width:90%;height:100vh;background:#fff;z-index:10001;padding:35px 28px;transition:.35s;box-shadow:-10px 0 30px rgba(0,0,0,.18);overflow:auto}
+    .side-menu.active{right:0}
+    .side-close{border:0;background:transparent;font-size:38px;float:right}
+    .side-menu ul{list-style:none;margin:60px 0 0;padding:0}
+    .side-menu li{border-bottom:1px solid #eee}
+    .side-menu a{display:block;padding:15px 0;font-size:18px;font-weight:700}
+    .side-sub{display:none!important;margin:0!important;padding-left:15px!important;background:#f8f8f8}
+    .side-sub.open{display:block!important}
+
+    /* HERO */
+    .leader-hero{margin-top:122px;min-height:390px;position:relative;background:url('https://glaonline.com/uploads/cms_images/694d45ee21e9e1766671854.webp') left center/cover no-repeat;display:flex;align-items:center;text-align:center;color:#fff}
+    .leader-hero:before{content:"";position:absolute;inset:0;background:rgba(0,92,38,.88)}
+    .leader-hero .container{position:relative;z-index:1}
+    .leader-hero h1{font-size:48px;line-height:1.18;font-weight:900;margin-bottom:28px}
+    .leader-hero p{font-size:25px;line-height:1.4;font-weight:600;max-width:860px;margin:0 auto 48px}
+    .leader-tabs{display:flex;justify-content:center;gap:28px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+    .leader-tabs a{display:block;color:#fff;font-size:22px;padding:0 10px 28px;position:relative}
+    .leader-tabs li.active a{color:var(--yellow)}
+    .leader-tabs li.active a:after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;background:var(--yellow)}
+
+    /* ELIGIBILITY */
+    .eligibility-subhead{background:#f4f4f4;padding:78px 0 35px;text-align:center}
+    .eligibility-subhead blockquote{font-size:34px;line-height:1.35;font-weight:400;margin:0 auto;max-width:1080px;color:#111}
+    .eligible-section{background:#f4f4f4;padding:35px 0 100px}
+    .eligible-wrap{max-width:1120px;margin:auto}
+    .tab-buttons{display:flex;justify-content:center;margin-bottom:46px}
+    .tab-btn{border:0;background:#fff;color:#111;font-size:20px;font-weight:800;padding:19px 45px;min-width:310px;box-shadow:0 8px 24px rgba(0,0,0,.08);transition:.3s ease}
+    .tab-btn:first-child{border-radius:8px 0 0 8px}.tab-btn:last-child{border-radius:0 8px 8px 0}.tab-btn.active{background:#3d6f3f;color:#fff}
+    .eligible-tab{display:none}.eligible-tab.active{display:block}
+    .eligible-group{background:#fff;margin-bottom:42px;box-shadow:0 12px 32px rgba(0,0,0,.08);overflow:hidden}
+    .eligible-img,.eligible-img figure{height:100%;margin:0}.eligible-img img{width:100%;height:100%;min-height:390px;object-fit:cover}
+    .eligible-cont{padding:48px 52px;background:#fff}.eligible-cont.left-cont{padding-left:0;padding-right:55px}
+    .eligible-cont h3{font-size:30px;line-height:1.22;font-weight:900;color:#2f6f35;margin:0 0 22px}
+    .eligible-cont blockquote{font-size:21px;line-height:1.45;font-weight:600;color:#111;margin:0 0 20px}
+    .eligible-cont p{font-size:16px;line-height:1.65;color:#111;margin:0 0 28px}
+    .btn-yellow{display:inline-block;background:#ffd332;color:#111!important;font-size:17px;font-weight:900;padding:13px 30px;border-radius:4px;transition:.3s ease}.btn-yellow:hover{background:#3d6f3f;color:#fff!important}
+
+    /* FOOTER */
+    .footer{background:var(--footer);color:#fff;padding:38px 0 30px}
+    .footer-links{display:flex;justify-content:center;gap:20px 24px;flex-wrap:wrap;margin:0;padding:0;list-style:none}
+    .footer-links a{font-size:15px;font-weight:700;color:#fff}
+    .footer-line{height:1px;background:rgba(255,255,255,.25);margin:26px 0}
+    .footer-bottom{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:18px}
+    .footer-bottom p{font-size:13px;font-weight:700;margin:0}
+    .credit{text-align:right}
+    .social{display:flex;gap:18px;align-items:center;justify-content:center}
+    .social a{width:34px;height:34px;border-radius:50%;background:#050505;display:grid;place-items:center;color:#fff;font-size:15px}
+    .social a:nth-child(1){color:#3858ff}.social a:nth-child(2){color:red}.social a:nth-child(3){color:#d34aa1}
+
+    /* FLOAT APPLY */
+    .float-apply{position:fixed;right:0;bottom:22px;background:var(--green);color:#fff!important;font-weight:900;padding:16px 24px;border-radius:6px 0 0 6px;z-index:9997;font-size:17px}
+
+    /* MOBILE BOTTOM */
+    .mobile-bottom{display:none}
+    .mobile-panel{display:none}
+
+    @media(max-width:1199px){
+      .header-wrap{padding:20px 36px}.logo img{width:360px}.top-links,.main-nav{gap:18px}.leader-hero h1{font-size:40px}
+    }
+    @media(max-width:991px){
+      .header-wrap{padding:16px 20px}.logo img{width:290px}.right-head{gap:0}.top-links,.main-nav{display:none}.leader-hero{margin-top:91px;min-height:320px}.leader-hero h1{font-size:34px}.leader-hero p{font-size:20px;margin-bottom:0}.eligibility-subhead{padding:55px 0 25px}.eligibility-subhead blockquote{font-size:26px}.tab-btn{min-width:auto;width:50%;font-size:17px;padding:16px 12px}.eligible-cont,.eligible-cont.left-cont{padding:34px 28px}.eligible-img img{min-height:300px}.eligible-cont h3{font-size:25px}.eligible-cont blockquote{font-size:18px}.footer-bottom{display:flex;flex-direction:column;text-align:center}.credit{text-align:center}.float-apply{bottom:100px;right:16px;border-radius:8px}.mobile-bottom{display:grid;grid-template-columns:repeat(4,1fr);position:fixed;left:10px;right:10px;bottom:8px;z-index:9999;background:#2f6d82;border-radius:20px 20px 8px 8px;overflow:hidden}.mobile-bottom button{border:0;background:transparent;color:#fff;padding:10px 4px;font-size:13px;border-right:1px solid rgba(255,255,255,.2)}.mobile-bottom button:last-child{border-right:0}.mobile-bottom i{display:block;font-size:24px;margin-bottom:4px}.mobile-panel{position:fixed;left:10px;right:10px;bottom:78px;background:#fff;z-index:9998;border-radius:14px;padding:20px;box-shadow:0 0 25px rgba(0,0,0,.25);max-height:70vh;overflow:auto}.mobile-panel.active{display:block}.mobile-panel h4{font-weight:900;color:var(--green);margin-bottom:15px}.mobile-panel a{display:block;padding:12px 0;border-bottom:1px solid #eee;font-weight:700}.mega-menu{display:none!important}}
+    @media(max-width:575px){
+      .logo img{width:230px}.header-wrap{padding:14px}.leader-hero{margin-top:77px;min-height:260px}.leader-hero h1{font-size:30px}.leader-hero p{font-size:16px;margin-bottom:0}.eligibility-subhead{padding:40px 0 20px}.eligibility-subhead blockquote{font-size:21px}.eligible-section{padding:28px 0 80px}.tab-btn{font-size:14px;padding:14px 8px}.eligible-group{margin-bottom:30px}.eligible-img img{min-height:auto}.eligible-cont h3{font-size:22px}.eligible-cont blockquote{font-size:16px}.eligible-cont p{font-size:15px}.btn-yellow{font-size:15px;padding:11px 22px}.footer-links{display:grid;grid-template-columns:1fr 1fr;text-align:left}.float-apply{font-size:15px;padding:12px 18px}.hamb-btn,.search-btn{font-size:28px}}
+  </style>
+</head>
+
+<body>
+  <header class="main-header">
+    <div class="header-wrap">
+      <a href="https://glaonline.com/" class="logo">
+        <img src="https://glaonline.com/siteassets/images/green-logo.webp" alt="GLA Online">
+      </a>
+
+      <div class="right-head">
+        <ul class="top-links">
+          <li><a href="mailto:onlineadmissions@gla.ac.in"><i class="bi bi-envelope-fill"></i>onlineadmissions@gla.ac.in</a></li>
+          <li><a href="tel:+919568536853"><i class="bi bi-telephone-fill"></i>+91-9568536853</a></li>
+          <li><a href="https://apply.glaonline.com/" target="_blank" class="apply-btn">Apply Now</a></li>
+          <li><a href="https://www.myglaonline.com/" target="_blank" class="student-btn">Student Login</a></li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-4">
+          <ul class="main-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">About Us</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="Overview.html">Overview</a></li>
+                <li><a class="dropdown-item" href="Chancellor.html">Leadership</a></li>
+                <li><a class="dropdown-item" href="Reco-Accr.html">Recognitions & Accreditations</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">Admissions</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="https://glaonline.com/admission/admission-procedure">Admission Procedure</a></li>
+                <li><a class="dropdown-item" href="https://glaonline.com/admission/eligibility">Eligibility Criteria</a></li>
+                <li><a class="dropdown-item" href="https://glaonline.com/admission/fee-structure">Fee Structure</a></li>
+                <li><a class="dropdown-item" href="https://glaonline.com/admission/evaluation-system">Evaluation System</a></li>
+                <li><a class="dropdown-item" href="https://glaonline.com/admission/academic-calendar">Academic Calendar</a></li>
+              </ul>
+            </li>
+            <li><a href="javascript:void(0)" id="programToggle">Programs <i class="bi bi-caret-down-fill small"></i></a></li>
+            <li><a href="https://glaonline.com/contact-us">Contact Us</a></li>
+          </ul>
+          <button class="search-btn" onclick="openSearch()" aria-label="Search"><i class="bi bi-search"></i></button>
+          <span class="divider d-none d-md-block"></span>
+          <button class="hamb-btn" onclick="openSideMenu()" aria-label="Menu"><i class="bi bi-list"></i></button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="mega-menu" id="megaMenu">
+    <div class="container-fluid">
+      <div class="row g-4 row-cols-1 row-cols-md-5">
+        <div class="col"><div class="program-card"><span class="program-tag">PG</span><img src="https://glaonline.com/uploads/course_group/6928264fb0a231764238927.webp" alt="MBA"><div class="program-title"><span>Master of</span>Business Administration</div><div class="plus">+</div><a href="https://glaonline.com/program/mba" class="card-cover">MBA</a></div></div>
+        <div class="col"><div class="program-card"><span class="program-tag">PG</span><img src="https://glaonline.com/uploads/course_group/68aef588901ea1756296584.webp" alt="MCA"><div class="program-title"><span>Master of</span>Computer Applications</div><div class="plus">+</div><a href="https://glaonline.com/program/mca" class="card-cover">MCA</a></div></div>
+        <div class="col"><div class="program-card"><span class="program-tag">UG</span><img src="https://glaonline.com/uploads/course_group/68aedd4b265be1756290379.webp" alt="BBA"><div class="program-title"><span>Bachelor of</span>Business Administration</div><div class="plus">+</div><a href="https://glaonline.com/program/bba" class="card-cover">BBA</a></div></div>
+        <div class="col"><div class="program-card"><span class="program-tag">UG</span><img src="https://glaonline.com/uploads/course_group/68aedd8f853ee1756290447.webp" alt="BCA"><div class="program-title"><span>Bachelor of</span>Computer Applications</div><div class="plus">+</div><a href="https://glaonline.com/program/bca" class="card-cover">BCA</a></div></div>
+        <div class="col"><div class="program-card"><span class="program-tag">UG</span><img src="https://glaonline.com/uploads/course_group/68aeddd46cb4b1756290516.webp" alt="BCom"><div class="program-title"><span>Bachelor of</span>Commerce (Hons.)</div><div class="plus">+</div><a href="https://glaonline.com/program/bcom-hons" class="card-cover">BCom</a></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="search-overlay" id="searchOverlay">
+    <span class="search-close" onclick="closeSearch()">×</span>
+    <form class="search-form" action="https://glaonline.com/search">
+      <input type="text" name="search" placeholder="Search..." required>
+      <button type="submit"><i class="bi bi-search"></i></button>
+    </form>
+  </div>
+
+  <aside class="side-menu" id="sideMenu">
+    <button class="side-close" onclick="closeSideMenu()">×</button>
+    <ul>
+      <li><a href="https://glaonline.com/faculty">Meet Our Faculty</a></li>
+      <li><a href="javascript:void(0)" onclick="toggleSub(this)">Events @ GLA <i class="bi bi-chevron-down float-end"></i></a><ul class="side-sub"><li><a href="https://glaonline.com/news-events">News and Events</a></li><li><a href="https://glaonline.com/media-coverage">Media Coverage</a></li><li><a href="https://glaonline.com/cdoe-events">CDOE Events</a></li></ul></li>
+      <li><a href="https://glaonline.com/faq">FAQs</a></li>
+      <li><a href="https://glaonline.com/testimonials/students">Testimonials</a></li>
+      <li><a href="https://glaonline.com/blog">Blog</a></li>
+      <li><a href="javascript:void(0)" onclick="toggleSub(this)">Quick Links <i class="bi bi-chevron-down float-end"></i></a><ul class="side-sub"><li><a href="https://glaonline.com/terms-conditions/">Terms & Conditions</a></li><li><a href="https://glaonline.com/privacy-policy/">Privacy Policy</a></li><li><a href="https://glaonline.com/disclaimer/">Disclaimer</a></li></ul></li>
+      <li><a href="https://glaonline.com/mandatory-disclosure">Mandatory Disclosure</a></li>
+      <li><a href="https://glaonline.com/contact-us">Contact Us</a></li>
+    </ul>
+  </aside>
+
+  <main>
+    <section class="leader-hero" data-aos="fade-in" data-aos-duration="900">
+      <div class="container">
+        <h1 data-aos="fade-up" data-aos-delay="250">Eligibility Criteria</h1>
+        <p data-aos="fade-up" data-aos-delay="450">Academic criteria designed for learners' success.</p>
+      </div>
+    </section>
+
+    <section class="eligibility-subhead">
+      <div class="container">
+        <blockquote data-aos="fade-up" data-aos-delay="200" data-aos-duration="900">Clear and well-defined eligibility criteria designed to support learners' success from day one.</blockquote>
+      </div>
+    </section>
+
+    <section class="eligible-section">
+      <div class="container">
+        <div class="eligible-wrap">
+          <div class="tab-buttons" data-aos="fade-up" data-aos-delay="200" data-aos-duration="900">
+            <button class="tab-btn active" data-tab="tab1">Postgraduate Programs</button>
+            <button class="tab-btn" data-tab="tab2">Undergraduate Programs</button>
+          </div>
+
+          <div class="eligible-tab active" id="tab1">
+            <div class="eligible-group" data-aos="fade-up" data-aos-delay="250" data-aos-duration="1000">
+              <div class="row g-0 align-items-center">
+                <div class="col-lg-6"><div class="eligible-img"><figure><img src="https://glaonline.com/siteassets/images/eligible.webp" alt="MBA Eligibility"></figure></div></div>
+                <div class="col-lg-6"><div class="eligible-cont"><h3>Master of Business Administration (MBA)</h3><blockquote>To be eligible for the MBA program by GLA Online, applicants must hold a bachelor’s degree in any discipline from a recognised university.</blockquote><p>Final-year undergraduate students awaiting their results are also eligible to apply. This allows learners to begin their academic journey without delay and step confidently toward their professional goals.</p><a href="https://glaonline.com/program/mba" class="btn-yellow">Apply Now</a></div></div>
+              </div>
+            </div>
+            <div class="eligible-group" data-aos="fade-up" data-aos-delay="350" data-aos-duration="1000">
+              <div class="row g-0 align-items-center">
+                <div class="col-lg-6 order-lg-1 order-2"><div class="eligible-cont left-cont"><h3>Master of Computer Applications (MCA)</h3><blockquote>To apply for the MCA program by GLA Online, candidates must hold a bachelor’s degree from a recognised university, preferably with a background in Science, Computer Applications or Information Technology (IT)</blockquote><p>A basic understanding of programming or logical thinking is recommended to help navigate the curriculum efficiently. Undergraduate final-year students awaiting the results can also apply.</p><a href="https://glaonline.com/program/mca" class="btn-yellow">Apply Now</a></div></div>
+                <div class="col-lg-6 order-lg-2 order-1"><div class="eligible-img"><figure><img src="https://glaonline.com/siteassets/images/eligible3.webp" alt="MCA Eligibility"></figure></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="eligible-tab" id="tab2">
+            <div class="eligible-group" data-aos="fade-up" data-aos-delay="250" data-aos-duration="1000">
+              <div class="row g-0 align-items-center">
+                <div class="col-lg-6"><div class="eligible-img"><figure><img src="https://glaonline.com/siteassets/images/bba-eligible.webp" alt="BBA Eligibility"></figure></div></div>
+                <div class="col-lg-6"><div class="eligible-cont"><h3>Bachelor of Business Administration (BBA)</h3><blockquote>Students applying for the BBA program by GLA Online must have completed 10+2 or equivalent from a recognised board in any stream.</blockquote><p>Applicants from all academic backgrounds are welcome - whether from commerce, science, arts, or vocational studies. The program is ideal for those aspiring to build a career in management, business, or entrepreneurship.</p><a href="https://glaonline.com/program/bba" class="btn-yellow">Apply Now</a></div></div>
+              </div>
+            </div>
+            <div class="eligible-group" data-aos="fade-up" data-aos-delay="350" data-aos-duration="1000">
+              <div class="row g-0 align-items-center">
+                <div class="col-lg-6 order-lg-1 order-2"><div class="eligible-cont left-cont"><h3>Bachelor of Computer Application (BCA)</h3><blockquote>To be eligible for the BCA program by GLA Online, learners must have completed 10+2 or an equivalent qualification from a recognised board in any stream.</blockquote><p>No prior coding experience is required. While familiarity with computers is helpful. There are no specific restrictions - we teach everything from the ground up.</p><a href="https://glaonline.com/program/bca" class="btn-yellow">Apply Now</a></div></div>
+                <div class="col-lg-6 order-lg-2 order-1"><div class="eligible-img"><figure><img src="https://glaonline.com/siteassets/images/bca-eligible.webp" alt="BCA Eligibility"></figure></div></div>
+              </div>
+            </div>
+            <div class="eligible-group" data-aos="fade-up" data-aos-delay="450" data-aos-duration="1000">
+              <div class="row g-0 align-items-center">
+                <div class="col-lg-6"><div class="eligible-img"><figure><img src="https://glaonline.com/siteassets/images/eligible2.webp" alt="BCom Eligibility"></figure></div></div>
+                <div class="col-lg-6"><div class="eligible-cont"><h3>Bachelor of Commerce (Hons.)</h3><blockquote>To apply for the B.COM. (Hons.) program by GLA Online, candidates must have completed 10+2 or an equivalent qualification from any recognised board, in any stream.</blockquote><p>The B.COM. (Hons.) program by GLA Online builds a strong foundation for jobs in banking, business, or higher studies in commerce-related fields. Learners from all academic disciplines can apply.</p><a href="https://glaonline.com/program/bcom-hons" class="btn-yellow">Apply Now</a></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <ul class="footer-links">
+        <li><a href="https://glaonline.com/about-us/overview">About Us</a></li>
+        <li><a href="https://glaonline.com/admission/admission-procedure">Admissions</a></li>
+        <li><a href="https://glaonline.com/program">Programs</a></li>
+        <li><a href="https://glaonline.com/news-events">Events @ GLA</a></li>
+        <li><a href="https://glaonline.com/faq">FAQs</a></li>
+        <li><a href="https://glaonline.com/testimonials/students">Testimonials</a></li>
+        <li><a href="https://glaonline.com/terms-conditions">Terms & Conditions</a></li>
+        <li><a href="https://glaonline.com/privacy-policy">Privacy Policy</a></li>
+        <li><a href="https://glaonline.com/disclaimer">Disclaimer</a></li>
+        <li><a href="https://glaonline.com/mandatory-disclosure">Mandatory Disclosure</a></li>
+        <li><a href="https://glaonline.com/contact-us">Contact Us</a></li>
+      </ul>
+      <div class="footer-line"></div>
+      <div class="footer-bottom">
+        <p>© Copyright 2026 - GLA Online. All Rights Reserved.</p>
+        <div class="social">
+          <a href="https://www.facebook.com/glacourseonline01/" target="_blank"><i class="bi bi-facebook"></i></a>
+          <a href="javascript:void(0)"><i class="bi bi-youtube"></i></a>
+          <a href="https://www.instagram.com/glau_online/" target="_blank"><i class="bi bi-instagram"></i></a>
+        </div>
+        <p class="credit">Website Design and Developed by <a href="https://www.stercodigitex.com/" target="_blank">Sterco Digitex</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://apply.glaonline.com/" target="_blank" class="float-apply">Apply Now</a>
+
+  <nav class="mobile-bottom">
+    <button onclick="openMobilePanel('programPanel')"><i class="bi bi-book"></i><span>Programs</span></button>
+    <button onclick="openMobilePanel('admissionPanel')"><i class="bi bi-mortarboard"></i><span>Admission</span></button>
+    <button onclick="openMobilePanel('contactPanel')"><i class="bi bi-telephone-fill"></i><span>Contact</span></button>
+    <button onclick="openMobilePanel('menuPanel')"><i class="bi bi-grid-fill"></i><span>Menu</span></button>
+  </nav>
+
+  <div class="mobile-panel" id="programPanel"><h4>Find Your Program</h4><a href="https://glaonline.com/program/mba">Master of Business Administration</a><a href="https://glaonline.com/program/mca">Master of Computer Applications</a><a href="https://glaonline.com/program/bba">Bachelor of Business Administration</a><a href="https://glaonline.com/program/bca">Bachelor of Computer Applications</a><a href="https://glaonline.com/program/bcom-hons">Bachelor of Commerce (Hons.)</a></div>
+  <div class="mobile-panel" id="admissionPanel"><h4>Admissions</h4><a href="tel:+919568536853">+91-9568536853</a><a href="mailto:onlineadmissions@gla.ac.in">onlineadmissions@gla.ac.in</a><a href="https://apply.glaonline.com/">Apply Now</a></div>
+  <div class="mobile-panel" id="contactPanel"><h4>Contact</h4><a href="tel:+919568536853">Call Us Now</a><a href="https://glaonline.com/contact-us">Contact Us</a></div>
+  <div class="mobile-panel" id="menuPanel"><h4>Menu</h4><a href="https://glaonline.com/about-us/overview">About Us</a><a href="https://glaonline.com/faculty">Meet Our Faculty</a><a href="https://glaonline.com/faq">FAQs</a><a href="https://glaonline.com/blog">Blog</a><a href="https://glaonline.com/contact-us">Contact Us</a></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      once: true,
+      offset: 120,
+      duration: 900,
+      easing: 'ease-in-out'
+    });
+
+    const megaMenu = document.getElementById('megaMenu');
+    const programToggle = document.getElementById('programToggle');
+    let megaTimer;
+
+    if(programToggle && megaMenu){
+      programToggle.addEventListener('mouseenter', () => {
+        clearTimeout(megaTimer);
+        megaMenu.classList.add('active');
+      });
+      programToggle.addEventListener('mouseleave', () => {
+        megaTimer = setTimeout(() => megaMenu.classList.remove('active'), 180);
+      });
+      megaMenu.addEventListener('mouseenter', () => {
+        clearTimeout(megaTimer);
+        megaMenu.classList.add('active');
+      });
+      megaMenu.addEventListener('mouseleave', () => {
+        megaTimer = setTimeout(() => megaMenu.classList.remove('active'), 180);
+      });
+    }
+
+    function openSearch(){document.getElementById('searchOverlay').classList.add('active')}
+    function closeSearch(){document.getElementById('searchOverlay').classList.remove('active')}
+    function openSideMenu(){document.getElementById('sideMenu').classList.add('active')}
+    function closeSideMenu(){document.getElementById('sideMenu').classList.remove('active')}
+    function toggleSub(el){el.nextElementSibling.classList.toggle('open')}
+
+    function openMobilePanel(id){
+      document.querySelectorAll('.mobile-panel').forEach(panel => {
+        if(panel.id !== id) panel.classList.remove('active');
+      });
+      document.getElementById(id).classList.toggle('active');
+    }
+
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.eligible-tab').forEach(tab => tab.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.tab).classList.add('active');
+        AOS.refresh();
+      });
+    });
+
+    document.addEventListener('keydown', e => {
+      if(e.key === 'Escape'){
+        closeSearch();
+        closeSideMenu();
+        megaMenu.classList.remove('active');
+        document.querySelectorAll('.mobile-panel').forEach(p => p.classList.remove('active'));
+      }
+    });
+
+    document.addEventListener('click', e => {
+      if(!e.target.closest('.mobile-panel') && !e.target.closest('.mobile-bottom')){
+        document.querySelectorAll('.mobile-panel').forEach(p => p.classList.remove('active'));
+      }
+    });
+  </script>
+</body>
+</html>
