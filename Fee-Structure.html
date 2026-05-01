@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GLA Online Header</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            padding-top: 82px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #fff;
+            z-index: 9999;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .header-wrap {
+            padding: 14px 52px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo img {
+            width: 300px;
+        }
+
+        .right-head {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 12px;
+        }
+
+        .top-links,
+        .main-nav {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .top-links a {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .top-links i {
+            color: #2f6f35;
+            margin-right: 6px;
+        }
+
+        .main-nav a {
+            font-size: 15px;
+            color: #000;
+            font-weight: 500;
+        }
+
+        .main-nav a:hover {
+            color: #2f6f35;
+        }
+
+        .main-nav .dropdown {
+            position: relative;
+        }
+
+        .main-nav .dropdown-menu {
+            display: block;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 240px;
+            padding: 0;
+            border: 0;
+            border-radius: 0;
+            background: linear-gradient(#6e8c3f, #ffd332);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(14px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .main-nav .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .dropdown-item {
+            color: #fff !important;
+            padding: 14px 18px;
+            font-size: 14px;
+        }
+
+        .dropdown-item:hover {
+            background: #5f7d35;
+        }
+
+        .search-btn,
+        .hamb-btn {
+            border: 0;
+            background: transparent;
+            font-size: 26px;
+            cursor: pointer;
+        }
+
+        .divider {
+            width: 1px;
+            height: 26px;
+            background: #bbb;
+        }
+
+        .mega-menu {
+            position: fixed;
+            top: 110px;
+            left: 0;
+            width: 100%;
+            background: #ffd332;
+            z-index: 9998;
+            padding: 30px 55px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(16px);
+            transition: all 0.35s ease;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
+            height: 400px;
+        }
+
+        .mega-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .program-card {
+            height: 320px;
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+            background: #000;
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.18);
+        }
+
+        .program-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.9;
+            transition: transform 0.35s ease;
+        }
+
+        .program-card:hover img {
+            transform: scale(1.06);
+        }
+
+        .program-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 35%, rgba(0, 0, 0, 0.95));
+        }
+
+        .program-tag {
+            position: absolute;
+            top: 16px;
+            right: 0;
+            background: #2f6f35;
+            color: #fff;
+            padding: 5px 12px;
+            z-index: 2;
+            font-size: 14px;
+        }
+
+        .program-title {
+            position: absolute;
+            left: 16px;
+            bottom: 20px;
+            color: #fff;
+            z-index: 2;
+            font-size: 17px;
+            line-height: 1.2;
+        }
+
+        .program-title span {
+            display: block;
+            color: #ffd332;
+        }
+
+        .plus {
+            position: absolute;
+            right: 16px;
+            bottom: 20px;
+            z-index: 2;
+            color: #fff;
+            border: 1px solid #fff;
+            width: 28px;
+            height: 28px;
+            display: grid;
+            place-items: center;
+            font-size: 20px;
+        }
+
+        .card-cover {
+            position: absolute;
+            inset: 0;
+            z-index: 4;
+            font-size: 0;
+        }
+
+        .search-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.92);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .search-overlay.active {
+            display: flex;
+        }
+
+        .search-close {
+            position: absolute;
+            top: 28px;
+            right: 42px;
+            font-size: 52px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .search-form {
+            width: 100%;
+            max-width: 680px;
+            display: flex;
+            gap: 12px;
+        }
+
+        .search-form input {
+            flex: 1;
+            height: 60px;
+            border: 0;
+            border-radius: 999px;
+            padding: 0 28px;
+            font-size: 18px;
+        }
+
+        .search-form button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 0;
+            background: #2f6f35;
+            color: #fff;
+            font-size: 24px;
+        }
+
+        .side-menu {
+            position: fixed;
+            top: 0;
+            right: -390px;
+            width: 360px;
+            max-width: 90%;
+            height: 100vh;
+            background: #fff;
+            z-index: 10001;
+            padding: 35px 28px;
+            transition: right 0.35s ease;
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.18);
+            overflow-y: auto;
+        }
+
+        .side-menu.active {
+            right: 0;
+        }
+
+        .side-close {
+            border: 0;
+            background: transparent;
+            font-size: 38px;
+            float: right;
+        }
+
+        .side-menu ul {
+            list-style: none;
+            margin: 60px 0 0;
+            padding: 0;
+        }
+
+        .side-menu li {
+            border-bottom: 1px solid #eee;
+        }
+
+        .side-menu a {
+            display: block;
+            padding: 15px 0;
+            font-size: 18px;
+        }
+
+        .side-sub {
+            display: none;
+            padding-left: 15px;
+            background: #f8f8f8;
+        }
+
+        .side-sub.open {
+            display: block;
+        }
+
+        @media(max-width: 991px) {
+
+            .top-links,
+            .main-nav {
+                display: none;
+            }
+
+            .header-wrap {
+                padding: 12px 16px;
+            }
+
+            .logo img {
+                width: 220px;
+            }
+
+            .right-head {
+                flex-direction: row;
+            }
+
+            .divider {
+                display: none;
+            }
+
+            .mega-menu {
+                display: none;
+            }
+
+
+        }
+
+        @media(max-width: 575px) {
+            body {
+                padding-top: 66px;
+            }
+
+            .logo img {
+                width: 180px;
+            }
+
+            .search-btn,
+            .hamb-btn {
+                font-size: 23px;
+            }
+
+
+        }
+
+        .top-links .apply-btn,
+        .top-links .student-btn {
+            background: #2f6f35;
+            color: #fff !important;
+            padding: 9px 16px;
+            border-radius: 4px;
+            font-size: 15px;
+            font-weight: 500;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        /* HOVER EFFECT */
+        .top-links .apply-btn:hover,
+        .top-links .student-btn:hover {
+            background: #ffd332;
+            /* Yellow */
+            color: #111 !important;
+            /* Black */
+            transform: translateY(-2px);
+        }
+
+        .top-links .apply-btn:hover i,
+        .top-links .student-btn:hover i {
+            color: #111 !important;
+        }
+
+        /*part-2*/
+        .common-sec {
+            position: relative;
+            min-height: 315px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+
+        }
+
+        .banner_image_right {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .banner_image_right img {
+            width: 100%;
+            height: 100%;
+            object-position: center right;
+            /* shows right-side student properly */
+        }
+
+        /* Green overlay */
+        .common-sec::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+        }
+
+        .common-sec .container {
+            position: relative;
+            z-index: 3;
+        }
+
+        .common-text {
+            text-align: center;
+            color: #fff;
+            padding: 40px 20px;
+        }
+
+        .common-text h1 {
+            font-size: 42px;
+            font-weight: 600;
+            line-height: 1.15;
+            margin-bottom: 28px;
+            color: #fff;
+        }
+
+        .common-text p {
+            font-size: 22px;
+            line-height: 1.35;
+            max-width: 900px;
+            margin: 0 auto;
+            color: #fff;
+        }
+
+        /* Large laptop */
+        @media (max-width: 1400px) {
+            .common-text h1 {
+                font-size: 48px;
+            }
+
+            .common-text p {
+                font-size: 24px;
+            }
+        }
+
+        /* Laptop */
+        @media (max-width: 1200px) {
+            .common-sec {
+                min-height: 280px;
+            }
+
+            .common-text h1 {
+                font-size: 42px;
+            }
+
+            .common-text p {
+                font-size: 22px;
+            }
+        }
+
+        /* Tablet */
+        @media (max-width: 991px) {
+            .common-sec {
+                min-height: 250px;
+            }
+
+            .common-text {
+                padding: 30px 15px;
+            }
+
+            .common-text h1 {
+                font-size: 34px;
+                margin-bottom: 18px;
+            }
+
+            .common-text p {
+                font-size: 18px;
+                max-width: 700px;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 575px) {
+            .common-sec {
+                min-height: 220px;
+            }
+
+            .common-text h1 {
+                font-size: 26px;
+                margin-bottom: 14px;
+            }
+
+            .common-text p {
+                font-size: 15px;
+                line-height: 1.5;
+                padding: 0 8px;
+            }
+        }
+
+        /*part-3*/
+        /* SUBHEAD TEXT */
+        .common-sec.subhead {
+            background: #f4f4f4;
+            padding: 70px 0 45px;
+            text-align: center;
+        }
+
+        .common-sec.subhead blockquote {
+            font-size: 28px;
+            line-height: 1.35;
+            font-weight: 400;
+            color: #000;
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+
+        /* FEE SECTION */
+        .eligible_list {
+            background: #f4f4f4;
+            padding: 35px 0 90px;
+        }
+
+        .eligible_grid {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* TAB BUTTONS */
+        .tab-buttons {
+            display: flex !important;
+            justify-content: center;
+            margin-bottom: 70px;
+        }
+
+        .tab-btn {
+            border: 0;
+            background: #fff;
+            color: #5d8877;
+            font-size: 16px;
+           
+            padding: 18px 55px;
+            min-width: 340px;
+            border-radius: 0;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn:first-child {
+            border-radius: 7px 0 0 7px;
+        }
+
+        .tab-btn:last-child {
+            border-radius: 0 7px 7px 0;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #3f713f 45%, #ffd332 100%);
+            color: #fff;
+        }
+
+        /* TABS */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* COURSE BLOCK */
+        .eligible-cont.fee-cont {
+            text-align: center;
+            padding-bottom: 80px;
+            border-bottom: 1px solid #d4d4d4;
+            margin-bottom: 75px;
+        }
+
+        .eligible-cont.fee-cont:last-child {
+            border-bottom: 0;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .eligible-cont.fee-cont h3 {
+            font-size: 28px;
+            line-height: 1.25;
+            font-weight: 700;
+            color: #3f713f;
+            margin-bottom: 22px;
+        }
+
+        .eligible-cont.fee-cont blockquote {
+            font-size: 19px;
+            line-height: 1.45;
+            color: #000;
+            margin: 0 auto 28px;
+            max-width: 980px;
+        }
+
+        /* FEE BOX GRID */
+        .eligible_grid_one {
+            display: grid;
+            grid-template-columns: 395px 1fr;
+            gap: 38px;
+            align-items: stretch;
+            margin-top: 25px;
+        }
+
+        .eligible_bx {
+            background: #fff;
+            border-radius: 8px;
+            padding: 34px 38px;
+            text-align: left;
+            
+        }
+
+        .grid_one_shadow {
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+        }
+
+        .grid_one_bg {
+            background: #f7f7f7;
+        }
+
+        .eligible_bx p {
+            display: flex;
+            justify-content: space-between;
+            gap: 25px;
+            font-size: 16px;
+            line-height: 1.45;
+            color: #111;
+            margin: 0 0 20px;
+        }
+
+        .eligible_bx p:last-child {
+            margin-bottom: 0;
+        }
+
+        .eligible_bx span {
+          
+            color: #000;
+            text-align: right;
+        }
+
+        .grid_one_shadow p:last-child span {
+            font-weight: 800;
+        }
+
+        /* LAPTOP */
+        @media (max-width: 1400px) {
+            .common-sec.subhead blockquote {
+                font-size: 30px;
+            }
+
+            .tab-btn {
+                font-size: 18px;
+                min-width: 300px;
+            }
+
+            .eligible-cont.fee-cont h3 {
+                font-size: 30px;
+            }
+
+            .eligible-cont.fee-cont blockquote {
+                font-size: 22px;
+            }
+
+            .eligible_bx p {
+                font-size: 16px;
+            }
+        }
+
+        /* TABLET */
+        @media (max-width: 991px) {
+            .common-sec.subhead {
+                padding: 50px 0 30px;
+            }
+
+            .common-sec.subhead blockquote {
+                font-size: 24px;
+                padding: 0 15px;
+            }
+
+            .tab-buttons {
+                margin-bottom: 45px;
+            }
+
+            .tab-btn {
+                min-width: 220px;
+                padding: 15px 20px;
+                font-size: 17px;
+            }
+
+            .eligible_grid_one {
+                grid-template-columns: 1fr;
+                gap: 22px;
+            }
+
+            .eligible-cont.fee-cont {
+                padding-bottom: 55px;
+                margin-bottom: 55px;
+            }
+
+            .eligible-cont.fee-cont h3 {
+                font-size: 25px;
+            }
+
+            .eligible-cont.fee-cont blockquote {
+                font-size: 18px;
+            }
+        }
+
+        /* MOBILE */
+        @media (max-width: 575px) {
+            .common-sec.subhead {
+                padding: 38px 0 25px;
+            }
+
+            .common-sec.subhead blockquote {
+                font-size: 20px;
+            }
+
+            .eligible_list {
+                padding: 25px 0 60px;
+            }
+
+            .tab-buttons {
+                display: flex;
+                gap: 10px;
+                margin-bottom: 35px;
+            }
+
+            .tab-btn {
+                min-width: auto;
+                width: 50%;
+                padding: 13px 10px;
+                font-size: 14px;
+                border-radius: 7px !important;
+            }
+
+            .eligible-cont.fee-cont h3 {
+                font-size: 22px;
+            }
+
+            .eligible-cont.fee-cont blockquote {
+                font-size: 16px;
+            }
+
+            .eligible_bx {
+                padding: 24px 20px;
+            }
+
+            .eligible_bx p {
+                display: block;
+                font-size: 15px;
+            }
+
+            .eligible_bx span {
+                display: block;
+                text-align: left;
+                margin-top: 5px;
+            }
+        }
+    
+          
+/* ===== FOOTER ===== */
+.glaFooter_section{
+  background:#1d1714;
+  padding:40px 18px 30px;
+  color:#fff;
+}
+
+.glaFooter_container{
+  max-width:1200px;
+  margin:0 auto;
+}
+
+/* ===== LINKS ===== */
+.glaFooter_links{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:18px 22px;
+}
+
+.glaFooter_links a{
+  color:#fff;
+  text-decoration:none;
+  font-size:15px;
+  
+  transition:0.3s;
+}
+
+.glaFooter_links a:hover{
+  color:#ffc400;
+}
+
+/* LINE */
+.glaFooter_line{
+  height:1px;
+  background:rgba(255,255,255,.2);
+  margin:28px 0;
+}
+
+/* ===== BOTTOM ===== */
+.glaFooter_bottom{
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  gap:20px;
+}
+
+/* TEXT */
+.glaFooter_copy,
+.glaFooter_credit{
+  font-size:13px;
+  
+}
+
+.glaFooter_credit{
+  text-align:right;
+}
+
+/* ===== SOCIAL ICONS ===== */
+.glaFooter_social{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+}
+
+.glaFooter_social a{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:13px;
+  color:#fff;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+/* FACEBOOK */
+.glaFb{
+  background:#1877f2;
+}
+
+/* YOUTUBE */
+.glaYt{
+  background:#ff0000;
+}
+
+/* INSTAGRAM */
+.glaInsta{
+  background: radial-gradient(circle at 30% 30%, 
+    #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+}
+
+/* HOVER */
+.glaFooter_social a:hover{
+  transform:scale(1.1);
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:768px){
+
+  .glaFooter_links{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:28px 40px;
+    text-align:left;
+  }
+
+  .glaFooter_links a{
+    font-size:18px;
+  }
+
+  .glaFooter_bottom{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    gap:12px;
+  }
+
+  /* ORDER FIX */
+  .glaFooter_copy{
+    order:1;
+  }
+
+  .glaFooter_credit{
+    order:2;
+    text-align:center;
+  }
+
+  .glaFooter_social{
+    order:3;
+    margin-top:10px;
+  }
+}
+
+
+
+    </style>
+</head>
+
+<body>
+
+    <header class="main-header">
+        <div class="header-wrap">
+            <a href="#" class="logo">
+                <img src="https://glaonline.com/siteassets/images/green-logo.webp" alt="GLA Online">
+            </a>
+
+            <div class="right-head">
+                <ul class="top-links">
+                    <li>
+                        <a href="#">
+                            <i class="bi bi-envelope-fill"></i> onlineadmissions@gla.ac.in
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="bi bi-telephone-fill"></i> +91-9568536853
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="apply-btn">
+                            Apply Now
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="student-btn">
+                            Student Login
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="d-flex align-items-center gap-4">
+                    <ul class="main-nav">
+                        <li class="dropdown">
+                            <a href="#">About Us <i class="bi bi-caret-down-fill small"></i></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Overview</a></li>
+                                <li><a class="dropdown-item" href="#">Leadership</a></li>
+                                <li><a class="dropdown-item" href="#">Recognitions & Accreditations</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="#">Admissions<i class="bi bi-caret-down-fill small"></i></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Admission Procedure</a></li>
+                                <li><a class="dropdown-item" href="#">Eligibility Criteria</a></li>
+                                <li><a class="dropdown-item" href="#">Fee Structure</a></li>
+                                <li><a class="dropdown-item" href="#">Evaluation System</a></li>
+                                <li><a class="dropdown-item" href="#">Academic Calendar</a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="javascript:void(0)" id="programToggle">
+                                Programs <i class="bi bi-caret-down-fill small"></i>
+                            </a>
+                        </li>
+
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+
+                    <button class="search-btn" onclick="openSearch()" aria-label="Search">
+                        <i class="bi bi-search"></i>
+                    </button>
+
+                    <span class="divider"></span>
+
+                    <button class="hamb-btn" onclick="openSideMenu()" aria-label="Menu">
+                        <i class="bi bi-list"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="mega-menu" id="megaMenu">
+        <div class="container-fluid">
+            <div class="row g-4 row-cols-1 row-cols-md-5">
+                <div class="col">
+                    <div class="program-card">
+                        <span class="program-tag">PG</span>
+                        <img src="https://glaonline.com/uploads/course_group/6928264fb0a231764238927.webp" alt="MBA">
+                        <div class="program-title"><span>Master of</span>Business Administration</div>
+                        <div class="plus">+</div>
+                        <a href="#" class="card-cover">MBA</a>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="program-card">
+                        <span class="program-tag">PG</span>
+                        <img src="https://glaonline.com/uploads/course_group/68aef588901ea1756296584.webp" alt="MCA">
+                        <div class="program-title"><span>Master of</span>Computer Applications</div>
+                        <div class="plus">+</div>
+                        <a href="#" class="card-cover">MCA</a>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="program-card">
+                        <span class="program-tag">UG</span>
+                        <img src="https://glaonline.com/uploads/course_group/68aedd4b265be1756290379.webp" alt="BBA">
+                        <div class="program-title"><span>Bachelor of</span>Business Administration</div>
+                        <div class="plus">+</div>
+                        <a href="#" class="card-cover">BBA</a>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="program-card">
+                        <span class="program-tag">UG</span>
+                        <img src="https://glaonline.com/uploads/course_group/68aedd8f853ee1756290447.webp" alt="BCA">
+                        <div class="program-title"><span>Bachelor of</span>Computer Applications</div>
+                        <div class="plus">+</div>
+                        <a href="#" class="card-cover">BCA</a>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="program-card">
+                        <span class="program-tag">UG</span>
+                        <img src="https://glaonline.com/uploads/course_group/68aeddd46cb4b1756290516.webp" alt="B.Com">
+                        <div class="program-title"><span>Bachelor of</span>Commerce Hons.</div>
+                        <div class="plus">+</div>
+                        <a href="#" class="card-cover">BCom</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <div class="search-overlay" id="searchOverlay">
+        <span class="search-close" onclick="closeSearch()">×</span>
+        <form class="search-form">
+            <input type="text" placeholder="Search..." required>
+            <button type="submit"><i class="bi bi-search"></i></button>
+        </form>
+    </div>
+
+    <aside class="side-menu" id="sideMenu">
+        <button class="side-close" onclick="closeSideMenu()">×</button>
+        <ul>
+            <li><a href="#">Meet Our Faculty</a></li>
+            <li>
+                <a href="javascript:void(0)" onclick="toggleSub(this)">
+                    Events @ GLA <i class="bi bi-chevron-down float-end"></i>
+                </a>
+                <ul class="side-sub">
+                    <li><a href="#">News and Events</a></li>
+                    <li><a href="#">Media Coverage</a></li>
+                    <li><a href="#">CDOE Events</a></li>
+                </ul>
+            </li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Testimonials</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Mandatory Disclosure</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+    </aside>
+
+    <!-- part-2 -->
+    <section class="common-sec">
+
+        <picture class="banner_image_right">
+            <img src="https://glaonline.com/uploads/cms_images/694d4612536c01766671890.webp" alt="Fee Structure"
+                class="img-fluid w-100">
+        </picture>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto" data-aos="fade-up" data-aos-delay="800" data-aos-duration="1000">
+                    <div class="common-text">
+                        <h1>Your Degree, Your Investment </h1>
+                        <p>Explore course-wise fees designed to keep learning <br>accessible and affordable.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--part-3-->
+
+    <section class="common-sec subhead">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto" data-aos="fade-up" data-aos-delay="800" data-aos-duration="1000">
+                    <div class="common-text">
+                        <blockquote>At GLA Online, we offer transparent and affordable fee structures for our various
+                            programs.</blockquote>
+                        <!--<div class="blink_button"><span>ZERO COST EMI</span></div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="eligible_list">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="tabs-container eligible_grid">
+                        <div class="right-pnl image aos-init reveal-image aos-animate" data-aos="fade-up"
+                            data-aos-delay="800" data-aos-duration="1200">
+                            <div class="tab-buttons d-none d-md-block"><button class="tab-btn active"
+                                    data-tab="tab1">Postgraduate Programs</button> <button class="tab-btn"
+                                    data-tab="tab2">Undergraduate Programs</button></div>
+                            
+                        <div class="eligible-pnl aos-init aos-animate" data-aos="fade-up" data-aos-delay="800"
+                            data-aos-duration="1400">
+                            <div class="tab-content active" id="tab1">
+                                <div class="tab-body image2 reveal-image2">
+                                    <div class="eligible-pnl-grp">
+                                        <div class="row g-0 align-items-center">
+                                            <div class="col-lg-12">
+                                                <div class="eligible-cont fee-cont">
+                                                    <h3>Master of Business Administration (MBA)</h3>
+                                                    <blockquote>Develop leadership and management skills with the MBA
+                                                        program by GLA Online.</blockquote>
+                                                    <div class="eligible_grid_one">
+                                                        <div class="eligible_bx grid_one_shadow">
+                                                            <p>Per Semester: <span>₹ 24,250</span></p>
+                                                            <p>Per Year: <span>₹ 48,500</span></p>
+                                                            <p>Total Course Fee (2 Years): <span>₹ 97,000</span></p>
+                                                        </div>
+                                                        <div class="eligible_bx grid_one_bg">
+                                                            <p>Registration Fee: <span>₹ 500 (one-time)</span></p>
+                                                            <p>Alumni Fee: <span>₹ 1,800 (one-time)</span></p>
+                                                            <p>Exam Fee Options: <span>₹ 6,000 (full) / ₹ 3,000 (per
+                                                                    year) / ₹ 1,500 (per semester)</span></p>
+                                                            <p>Fee Benefits: <span>Avail ₹ 4,000 off on full payment or
+                                                                    ₹ 2,000 off first-year (yearly mode)</span></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="eligible-cont fee-cont">
+                                                    <h3>Master of Computer Applications (MCA)</h3>
+                                                    <blockquote>Advance your tech skills with a career-oriented MCA
+                                                        program by GLA Online.</blockquote>
+                                                    <div class="eligible_grid_one">
+                                                        <div class="eligible_bx grid_one_shadow">
+                                                            <p>Per Semester: <span>₹ 21,500</span></p>
+                                                            <p>Per Year: <span>₹ 43,000</span></p>
+                                                            <p>Total Course Fee (2 Years): <span>₹ 86,000</span></p>
+                                                        </div>
+                                                        <div class="eligible_bx grid_one_bg">
+                                                            <p>Registration Fee: <span>₹ 500 (one-time)</span></p>
+                                                            <p>Alumni Fee: <span>₹ 1,800 (one-time)</span></p>
+                                                            <p>Exam Fee Options: <span>₹ 6,000 (full) / ₹ 3,000 (per
+                                                                    year) / ₹ 1,500 (per semester)</span></p>
+                                                            <p>Fee Benefits: <span>Avail ₹ 4,000 off on full payment or
+                                                                    ₹ 2,000 off first-year (yearly mode)</span></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-content" id="tab2">
+                                <div class="tab-body image2 reveal-image2">
+                                    <div class="eligible-pnl-grp">
+                                        <div class="row g-0 align-items-center">
+                                            <div class="col-lg-12">
+                                                <div class="eligible-cont fee-cont">
+                                                    <h3>Bachelor of Business Administration (BBA)</h3>
+                                                    <blockquote>Shape your career in commerce and management with an
+                                                        industry-oriented BBA program by GLA Online.</blockquote>
+                                                    <div class="eligible_grid_one">
+                                                        <div class="eligible_bx grid_one_shadow">
+                                                            <p>Per Semester: <span>₹ 14,750</span></p>
+                                                            <p>Per Year: <span>₹ 29,500</span></p>
+                                                            <p>Total Course Fee (3 Years): <span>₹ 88,500</span></p>
+                                                        </div>
+                                                        <div class="eligible_bx grid_one_bg">
+                                                            <p>Registration Fee: <span>₹ 500 (one-time)</span></p>
+                                                            <p>Alumni Fee: <span>₹ 1,800 (one-time)</span></p>
+                                                            <p>Exam Fee Options: <span>₹ 9,000 (full) / ₹ 3,000 (per
+                                                                    year) / ₹ 1,500 (per semester)</span></p>
+                                                            <p>Fee Benefits: <span>Avail ₹ 3,000 off on full payment or
+                                                                    ₹ 1,000 on first-year (yearly mode)</span></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="eligible-cont fee-cont">
+                                                    <h3>Bachelor of Computer Applications (BCA)</h3>
+                                                    <blockquote>Begin your tech journey with hands-on learning and
+                                                        innovation with the BCA program by GLA Online.</blockquote>
+                                                    <div class="eligible_grid_one">
+                                                        <div class="eligible_bx grid_one_shadow">
+                                                            <p>Per Semester: <span>₹ 14,750</span></p>
+                                                            <p>Per Year: <span>₹ 29,500</span></p>
+                                                            <p>Total Course Fee (3 Years): <span>₹ 88,500</span></p>
+                                                        </div>
+                                                        <div class="eligible_bx grid_one_bg">
+                                                            <p>Registration Fee: <span>₹ 500 (one-time)</span></p>
+                                                            <p>Alumni Fee: <span>₹ 1,800 (one-time)</span></p>
+                                                            <p>Exam Fee Options: <span>₹ 9,000 (full) / ₹ 3,000 (per
+                                                                    year) / ₹ 1,500 (per semester)</span></p>
+                                                            <p>Fee Benefits: <span>Avail ₹ 3,000 off on full payment or
+                                                                    ₹ 1,000 on first-year (yearly mode)</span></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="eligible-cont fee-cont">
+                                                    <h3>Bachelor of Commerce (B.COM. (Hons.))</h3>
+                                                    <blockquote>Learn commerce anytime, anywhere with the B.COM. (Hons.)
+                                                        program by GLA Online.</blockquote>
+                                                    <div class="eligible_grid_one">
+                                                        <div class="eligible_bx grid_one_shadow">
+                                                            <p>Per Semester: <span>₹ 10,000</span></p>
+                                                            <p>Per Year: <span>₹ 20,000</span></p>
+                                                            <p>Total Course Fee (3 Years): <span>₹ 60,000</span></p>
+                                                        </div>
+                                                        <div class="eligible_bx grid_one_bg">
+                                                            <p>Registration Fee: <span>₹ 500 (one-time)</span></p>
+                                                            <p>Alumni Fee: <span>₹ 1,800 (one-time)</span></p>
+                                                            <p>Exam Fee Options: <span>₹ 9,000 (full) / ₹ 3,000 (per
+                                                                    year) / ₹ 1,500 (per semester)</span></p>
+                                                            <p>Fee Benefits: <span>Avail ₹ 3,000 off on full payment or
+                                                                    ₹ 1,000 on first-year (yearly mode)</span></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+  <footer class="glaFooter_section">
+
+      <div class="glaFooter_container">
+
+        <!-- LINKS -->
+        <div class="glaFooter_links">
+          <a href="#">About Us</a>
+          <a href="#">Admissions</a>
+          <a href="#">Programs</a>
+          <a href="#">Events @ GLA</a>
+          <a href="#">FAQs</a>
+          <a href="#">Testimonials</a>
+          <a href="#">Terms & Conditions</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Disclaimer</a>
+          <a href="#">Mandatory Disclosure</a>
+          <a href="#">Contact Us</a>
+        </div>
+
+        <!-- LINE -->
+        <div class="glaFooter_line"></div>
+
+        <!-- BOTTOM -->
+        <div class="glaFooter_bottom">
+
+          <!-- LEFT -->
+          <div class="glaFooter_copy">
+            © Copyright 2026 - GLA Online. All Rights Reserved.
+          </div>
+
+          <!-- CENTER -->
+          <div class="glaFooter_social">
+            <a href="#" class="glaFb"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="glaYt"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="glaInsta"><i class="fab fa-instagram"></i></a>
+          </div>
+
+          <!-- RIGHT -->
+          <div class="glaFooter_credit">
+            Website Design and Developed by Sterco Digitex
+          </div>
+
+        </div>
+
+      </div>
+
+    </footer>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        function openSearch() {
+            document.getElementById("searchOverlay").classList.add("active");
+        }
+
+        function closeSearch() {
+            document.getElementById("searchOverlay").classList.remove("active");
+        }
+
+        function openSideMenu() {
+            document.getElementById("sideMenu").classList.add("active");
+        }
+
+        function closeSideMenu() {
+            document.getElementById("sideMenu").classList.remove("active");
+        }
+
+        function toggleSub(el) {
+            el.nextElementSibling.classList.toggle("open");
+        }
+
+        const programToggle = document.getElementById("programToggle");
+        const megaMenu = document.getElementById("megaMenu");
+
+        programToggle.addEventListener("mouseenter", () => {
+            megaMenu.classList.add("active");
+        });
+
+        programToggle.addEventListener("mouseleave", () => {
+            setTimeout(() => {
+                if (!megaMenu.matches(":hover") && !programToggle.matches(":hover")) {
+                    megaMenu.classList.remove("active");
+                }
+            }, 120);
+        });
+
+        megaMenu.addEventListener("mouseenter", () => {
+            megaMenu.classList.add("active");
+        });
+
+        megaMenu.addEventListener("mouseleave", () => {
+            megaMenu.classList.remove("active");
+        });
+        //part-3
+        const tabButtons = document.querySelectorAll(".tab-btn");
+        const tabContents = document.querySelectorAll(".tab-content");
+
+        tabButtons.forEach((button) => {
+            button.addEventListener("click", function () {
+                const target = this.getAttribute("data-tab");
+
+                tabButtons.forEach((btn) => btn.classList.remove("active"));
+                tabContents.forEach((content) => content.classList.remove("active"));
+
+                document.querySelectorAll(`[data-tab="${target}"]`).forEach((btn) => {
+                    btn.classList.add("active");
+                });
+
+                document.getElementById(target).classList.add("active");
+            });
+        });
+    </script>
+
+
+</body>
+
+</html>
